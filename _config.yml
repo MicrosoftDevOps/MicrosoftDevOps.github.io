@@ -1,9 +1,9 @@
 # Site settings
 title: DevOps team Case Studies
-email: d_caro@hotmail.com
+email: dcaro@microsoft.com
 # description: 
-baseurl: "/devops" # the subpath of your site, e.g. /blog/
-url: http://dcaro.github.io" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: http://microsoftdevops.github.io/" # the base hostname & protocol for your site
 twitter_username: dcaro
 github_username:  dcaro
 encoding: utf-8
