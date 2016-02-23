@@ -1,6 +1,34 @@
-<HTML>
-    <header> Test page </header>
-    <body>
-        <h1> Hello World </h1>
-    </body>
-</HTML>
+---
+layout: default
+---
+
+<div class="home">
+  <ul id="container" class="post-list js-packery"
+    data-packery-options='{ "itemSelector": ".item" }'>
+    {% for post in site.posts %}
+      <li class="item{% if post.size > 1 %} {{ post.size }}{% endif %}">
+        <div class="card">
+          <div class="card-image {{ post.color }}">
+            <a href="{{ post.url | prepend: site.baseurl }}">
+                {% if post.image %}
+                <img class="card-back" src="{{ post.image}}" alt="case study image"/>
+                <span class="card-title">
+                    <span class="card-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    {{ post.title }}
+                </span>
+                {% else %}
+                <span class="card-title inline">
+                    <span class="card-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    {{ post.title }}
+                </span>
+                {% endif %}
+            </a>
+          </div>
+          <div class="card-content">
+            {{ post.excerpt | strip_html }}<p><a href="{{ post.url | prepend: site.baseurl }}">Read the full article</a></p>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

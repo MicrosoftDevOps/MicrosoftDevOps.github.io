@@ -1,0 +1,473 @@
+/**
+ * Site header
+ */
+.site-header {
+    border-top: 5px solid $grey-color-dark;
+    border-bottom: 1px solid $grey-color-light;
+    min-height: 65px;
+
+    // Positioning context for the mobile navigation icon
+    position: relative;
+}
+
+.site-title {
+    font-size: 0px;
+    line-height: 0px;
+    margin: 9px 2px 0 16px;
+    float: left;
+
+    &,
+    &:visited {
+        color: $grey-color-dark;
+    }
+}
+
+.site-title.slim {
+    margin: 9px 2px 0 0;
+}
+
+.site-title.slim::before {
+    margin: 0;
+}
+
+.site-title::before {
+	content: "";
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 202px;
+	display: inline-block;
+	margin: 8px 0 0 0;
+	vertical-align: sub;
+    @include retina {
+    	background-image: url("../images/logo_retina.png");
+        background-size: contain;
+    }
+}
+
+.site-nav {
+    float: right;
+    line-height: 56px;
+    box-shadow: none;
+    background-color: inherit;
+    width: inherit;
+    height: inherit;
+    margin-right: 16px;
+    overflow: inherit;
+
+    .menu-icon {
+        display: none;
+    }
+
+    .trigger {
+        display: inline-block;
+        vertical-align: bottom;
+        line-height: 40px;
+    }
+
+
+    .page-link {
+        color: $text-color;
+        line-height: $base-line-height;
+
+        // Gaps between nav items, but not on the first one
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+    }
+
+    @include media-query($on-palm) {
+        position: absolute;
+        top: 9px;
+        right: 0px;
+        min-height: 36px;
+        background-color: $background-color;
+        border: 1px solid $grey-color-light;
+        text-align: right;
+        z-index: 1000;
+
+        .menu-icon {
+            display: block;
+            float: right;
+            width: 36px;
+            height: 26px;
+            line-height: 0;
+            padding-top: 10px;
+            text-align: center;
+
+            > svg {
+                width: 18px;
+                height: 15px;
+
+                path {
+                    fill: $grey-color-dark;
+                }
+            }
+        }
+
+        .trigger {
+            clear: both;
+            display: none;
+        }
+
+        &:hover .trigger {
+            display: block;
+            padding-bottom: 5px;
+        }
+
+        .page-link {
+            display: block;
+            padding: 5px 10px;
+            line-height: 36px;
+        }
+    }
+}
+
+/**
+ * Site footer
+ */
+.site-footer {
+    margin-top: 20px;
+    border-top: 1px solid $grey-color-light;
+    padding: $spacing-unit 0;
+    background-color: rgb(47, 47, 47);
+    color: #fff;
+
+    a {
+        color: rgb(169, 169, 169);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.footer-heading {
+    font-size: 18px;
+    margin-bottom: $spacing-unit / 2;
+    margin-left: $spacing-unit;
+    margin-right: $spacing-unit;
+}
+
+.contact-list,
+.social-media-list {
+    list-style: none;
+    margin-left: 0;
+}
+
+.footer-col-wrapper {
+    font-size: 15px;
+    color: $grey-color;
+    margin-left: $spacing-unit / 2;
+    @extend %clearfix;
+}
+
+.footer-col-wrapper.slim {
+    margin-left: 0;
+    padding-left: 0;
+
+    .footer-col {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
+
+.footer-col {
+    float: left;
+    margin-bottom: $spacing-unit / 2;
+    padding-left: $spacing-unit / 2;
+}
+
+.footer-col-1 {
+    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
+    width:         calc(35% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-2 {
+    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
+    width:         calc(20% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
+    width:         calc(45% - (#{$spacing-unit} / 2));
+}
+
+.FooterLogoMsSvg {
+    margin-left: 1px;
+}
+
+#FooterLinks {
+    display: block;
+    margin-bottom: 10px;
+
+    span {
+        margin-right: 20px;
+    }
+
+    span:last-child {
+        margin-right: 0;
+    }
+
+    #Footer_title {
+        color: #fff;
+    }
+}
+
+#FooterCopyright {
+    font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@include media-query($on-laptop) {
+    .footer-col-1,
+    .footer-col-2 {
+        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+        width:         calc(50% - (#{$spacing-unit} / 2));
+    }
+
+    .footer-col-3 {
+        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+        width:         calc(100% - (#{$spacing-unit} / 2));
+    }
+}
+
+@include media-query($on-palm) {
+    .footer-col {
+        float: none;
+        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+        width:         calc(100% - (#{$spacing-unit} / 2));
+    }
+}
+
+/**
+ * Page content
+ */
+.page-content {
+    padding: 0;
+}
+
+.page-heading {
+    font-size: 20px;
+}
+
+.post-list {
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+        margin-bottom: $spacing-unit;
+    }
+}
+
+.post-meta {
+    font-size: $small-font-size;
+    color: $grey-color;
+}
+
+.post-link {
+    display: block;
+    font-size: 24px;
+}
+
+
+/**
+ * Posts
+ */
+.post-header {
+    margin-bottom: $spacing-unit;
+    margin-top: $spacing-unit * 2;
+}
+
+.post-title {
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1;
+
+
+    @include media-query($on-laptop) {
+        font-size: 36px;
+    }
+}
+
+.post-content {
+    margin-bottom: $spacing-unit;
+
+    h2 {
+        font-size: 32px;
+
+        @include media-query($on-laptop) {
+            font-size: 28px;
+        }
+    }
+
+    h3 {
+        font-size: 26px;
+
+        @include media-query($on-laptop) {
+            font-size: 22px;
+        }
+    }
+
+    h4 {
+        font-size: 20px;
+
+        @include media-query($on-laptop) {
+            font-size: 18px;
+        }
+    }
+}
+
+/**
+ * Home
+ */
+
+ #container {
+	margin:8px 0px 0px 16px;
+}
+
+.item {
+    float: left;
+    width: 100%;
+    @include media-query($on-desktop) { width: 20%; }
+    @include media-query($on-laptop)  { width: 33.333%; }
+    @include media-query($on-tablet)  { width: 50%;     }
+    @include media-query($on-palm)    { width: 100%;    }
+}
+
+.item.w2 {
+    float: left;
+    width: 100%;
+    @include media-query($on-desktop) { width: 40%; }
+    @include media-query($on-laptop) { width: 66.666%; }
+    @include media-query($on-tablet) { width: 100%;    }
+    @include media-query($on-palm)   { width: 100%;    }
+}
+
+.card,
+.card-image img,
+.card-content {
+	border-radius: 0 !important;
+}
+
+.card-image {
+    a:hover{
+      text-decoration: none !important;
+    }
+
+    img {
+	   max-height: 350px;
+    }
+}
+
+.card-title {
+    padding: 16px !important;
+}
+
+.card-title.inline {
+   display: block;
+   position: relative !important;
+}
+
+.card {
+	margin: 8px 16px 0 0 !important;
+    a {
+        text-transform: none;
+        margin: 0;
+        color: $brand-color;
+        text-decoration: none;
+
+        &:visited {
+            color: darken($brand-color, 15%);
+        }
+
+        &:hover {
+            color: $text-color;
+            text-decoration: underline;
+        }
+    }
+}
+
+.card-date {
+	font-size:12px;
+	display: block;
+}
+
+.author-image {
+	height: 32px;
+	width: 32px;
+    padding-right: 16px;
+}
+
+.author-name,
+.article-date {
+	padding-right: 8px;
+}
+
+.article-date {
+    padding-left: 8px;
+}
+
+.article-hero {
+	background-repeat: no-repeat;
+	background-size: auto;
+	color: #fff;
+	background-color: #000;
+    padding-top: 40px;
+
+    a {
+        text-decoration: underline;
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+        }
+
+        &:visited {
+            color: #fff;
+        }
+    }
+}
+
+.github-repo::before {
+	content:"";
+	width: 16px;
+	height: 16px;
+	background-image: url("../assets/images/GitHub-Mark-16px.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 4px 5px 0;
+}
+
+.github-repo,
+.deis-pin {
+	border: 1px solid #ccc;
+	text-transform: none !important;
+	padding: 2px 4px;
+	color: #000 !important;
+	margin: 0 4px 0 0 !important;
+	white-space: nowrap;
+	line-height: 32px;
+}
+
+.deis-pin::before {
+	content:"";
+	width: 16px;
+	height: 16px;
+	background-image: url("../assets/images/deispin.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 4px 5px 0;
+}
+
+.card-content a {
+	white-space: nowrap;
+}
+
+.card-action {
+	padding: 12px 20px 12px 20px !important;
+}

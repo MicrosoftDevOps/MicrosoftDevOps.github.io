@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html slim="true" %}
+
+    <div class="page-content">
+        <div class="wrapper">
+            {{ content }}
+        </div>
+    </div>
+
+    {% include footer.html slim="true" %}
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="javascrtips/jquery-2.1.4.min.js"><\/script>')
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/packery/1.4.2/packery.pkgd.min.js"></script>
+    <script src="{{ "/javascripts/main.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/javascripts/interactions.js" | prepend: site.baseurl }}"></script>
+</body>
+</html>
