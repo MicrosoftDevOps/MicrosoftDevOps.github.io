@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+ - rbx
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
+
+branches:
+  only:
+    - master
+    
+notifications:
+  email:
+    - dcaro@microsoft.com 
