@@ -2,7 +2,7 @@ language: ruby
 rvm:
  - 2.2.4
 # uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+script: bundle _1.11.2_  install
 
 branches:
   only:
