@@ -14,7 +14,7 @@
 <li><p>4,500+ enterprise customers</p></li>
 <li><p>$200 million+ annual revenue</p></li>
 </ul></th>
-<th><img src="images/sitecore.gif" align=center/></th>
+<th><img src="../../../../images/sitecore.gif" align=center/></th>
 </tr>
 </thead>
 <tbody>
@@ -28,11 +28,11 @@
 ##Value Stream Map##
 <p>To begin, the joint team of Microsoft and Sitecore used Value Stream Mapping (VSM), a means of identifying strengths and potential improvement points in an applications pipeline. This practice comes out of Lean Manufacturing and is easily adopted into IT service delivery to optimize processes and improve collaboration.</p>
 <p>The focus of the VSM exercise is to map out what must take place in order to transform an idea into a product or service, noting all the necessary steps that need to be taken by product owners, development, test, operations, and others.</p>
-<p><img src="images/sitecore-alm.png"/></p>This exercise should map out the average work-and-wait time between these different steps in an application development pipeline, showing a clear picture of how long each step takes to complete and how long before the next step can begin.</p>
+<p><img src="../../../../images/sitecore-alm.png"/></p>This exercise should map out the average work-and-wait time between these different steps in an application development pipeline, showing a clear picture of how long each step takes to complete and how long before the next step can begin.</p>
 <p>The team performed the Value Stream Mapping according to traditional Application Lifecycle Management (ALM) principles that cover Plan, Develop/Test, Release, and Monitor/Learn. By including DevOps practices, they could take it to the next level.</p>
 <p>From this exercise, the Sitecore team learned that their current processes enabled them to deploy new features and fixes to production in less than 9 days if prioritized and that they had an average cadence of 26 days for deploying from regular sprints.</p>
 <p>Below is the outcome of the VSM exercise for a specific Sitecore SaaS application. Using more traditional techniques like a whiteboard for the VSM work contributed to a great team experience and very visible, tangible results.</p>
-<p><img src="images/sitecore-wb.png" align="center"/></p>
+<p><img src="../../../../images/sitecore-wb.png" align="center"/></p>
 ##Monitor and Learn##
 <p>The Value Stream Mapping revealed an opportunity for Sitecore to improve how it monitors the solution and how it collects and uses feedback. It showed a lack of feedback from a service running in production to both product management and development. The Microsoft team recognized this as an issue because, in running online services, they’ve learned that understanding how people use those services is crucial to adoption and should be considered when deciding on new features.</p>
 <p>Another important implementation of monitoring is to give the needed information at the right time. This is very relevant when troubleshooting an application, and it is critical to providing the right information to the team working on bug fixes.</p>
@@ -97,7 +97,7 @@
 <p>For a full description of the technical implementation, see the Sitecore technical case study <a href="http://dxdevblog.azurewebsites.net/developerblog/real-life-code/2015/12/04/Dynamic-Web-Test-Generation-Using-App-Insights.html">Dynamic Web Test Generation Using App Insights</a>. A guide on Dynamic Web Test Creation is available at <a href="https://azure.microsoft.com/en-us/documentation/templates/201-dynamic-web-tests/">Azure Resources</a>. To get the Azure Resource Manager (ARM) template, go to the <a href="https://azure.microsoft.com/en-us/documentation/templates/">Azure Quickstart Templates</a> gallery.</p>
 <p><strong>Conclusion and final words </strong></p>
 <p>When the Hackfest ended after five days, the teams had implemented a solution that can be used across most of Sitecore´s online services and deployed as part of their existing methods.</p>
-<p><img src="images/sitecore-appin.png" /></p>By adding a strong monitoring solution, Sitecore will be able to collect usage data from its online services to use in evaluation of upcoming improvements to its applications. This closes the incomplete feedback loop that was discovered by the Value Stream Map exercise.</p>
+<p><img src="../../../../images/sitecore-appin.png" /></p>By adding a strong monitoring solution, Sitecore will be able to collect usage data from its online services to use in evaluation of upcoming improvements to its applications. This closes the incomplete feedback loop that was discovered by the Value Stream Map exercise.</p>
 <p>Development and operations benefit from this solution on several levels:</p>
 <ul>
 <li><p><strong>Faster deployment.</strong> Sitecore can achieve this by incorporating monitoring needs in the planning phase and developing them together with other features. Then when operations receives new builds to deploy, testing already will be defined and deployment will be automated via ARM.</p></li>
