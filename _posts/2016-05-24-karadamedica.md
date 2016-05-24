@@ -100,7 +100,7 @@ With regard to the architecture, the biggest problem was the manual deployment p
 Before beginning the Hackfest, we conducted a Value Stream Mapping exercise to help everyone visualize the current processes and find areas in need of improvement. Participants in this exercise included Dev, Ops, Product Owner, Business Owner, UX/Design, and CEO. Having the CEO participate and take part in the decision-making was especially helpful because it was necessary to have his approval.
 
  ![](/images/karadamedica2.jpg)
-*Figure 2: Value Stream Mapping *
+*Figure 2: Value Stream Mapping*
 
 We discussed solutions to the issues—in particular, the release process, which had a lot of unnecessary steps. Our goal was to reduce the time of one deployment to one day.
 
