@@ -33,7 +33,7 @@ The Karadamedica team wanted to move to a Hypotheses-Driven Development approach
 As part of the DevOps journey, they wanted to remove unnecessary practices and implement more automation. Microsoft and Karadamedica discussed these issues and how to begin the DevOps journey together with this Hackfest.
 
 
-![](images/karadamedica1.jpg)
+![](../images/karadamedica1.jpg)
 *Figure 1: Karadamedica Hackathon members*
 
 The full-time Hackfest team included:
