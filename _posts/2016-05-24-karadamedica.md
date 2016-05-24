@@ -33,7 +33,7 @@ The Karadamedica team wanted to move to a Hypotheses-Driven Development approach
 As part of the DevOps journey, they wanted to remove unnecessary practices and implement more automation. Microsoft and Karadamedica discussed these issues and how to begin the DevOps journey together with this Hackfest.
 
 
-![](../../../../images/karadamedica1.jpg)
+![](images/karadamedica1.jpg)
 *Figure 1: Karadamedica Hackathon members*
 
 The full-time Hackfest team included:
@@ -99,7 +99,7 @@ With regard to the architecture, the biggest problem was the manual deployment p
 ## Solution, Steps, and Delivery ##
 Before beginning the Hackfest, we conducted a Value Stream Mapping exercise to help everyone visualize the current processes and find areas in need of improvement. Participants in this exercise included Dev, Ops, Product Owner, Business Owner, UX/Design, and CEO. Having the CEO participate and take part in the decision-making was especially helpful because it was necessary to have his approval.
 
- ![](../../../../images/karadamedica2.jpg)
+ ![](images/karadamedica2.jpg)
 *Figure 2: Value Stream Mapping *
 
 We discussed solutions to the issues—in particular, the release process, which had a lot of unnecessary steps. Our goal was to reduce the time of one deployment to one day.
@@ -110,7 +110,7 @@ Then the Hackfest got under way. It was performed over two periods several month
 
 On day 1, we chose several pain points, prioritized them, and came up with solutions together. We wrote stories to visualize and share on Visual Studio Team Services (VSTS).
 
-![](../../../../images/karadamedica3.png)
+![](images/karadamedica3.png)
 *Figure 3: Software Kanban on Visual Studio Team Services* 
 
 We had only three days for this part of the hack, and we spent the first day discussing and setting up Azure and VSTS.
@@ -123,18 +123,18 @@ Hideyuki hacked the Automated Acceptance Testing tools ([SpecFlow](http://www.sp
  
 The team enjoyed the challenge of hacking and was able to do a lot of it on their own. But there was a cultural reluctance to ask questions and seek assistance, which we began to notice as the day went on. As a result, we didn’t make as much progress as expected. We learned from this and addressed it the next day by narrowing our focus.
 
-![](../../../../images/karadamedica4.jpg)
+![](images/karadamedica4.jpg)
 *Figure 4: Build demo*
 
 On day 3, we focused on only a few tasks that would generate the best outcome and that the Microsoft team was most needed for: Release Management, Infrastructure as Code, and Visualize the Business Value. Because we had three technical evangelists, we did pair programming with Karadamedica developers and IT Pros.
 
 We successfully implemented Release Management using VSTS, Infrastructure as Code using Azure Resource Manager, and Visualize the Business Value using Power BI. The CEO especially was pleased because Power BI can easily capture current status and they can learn from the production environment and analyze it quickly.
 
-![](../../../../images/karadamedica5.jpg)
+![](images/karadamedica5.jpg)
 *Figure 5: Power BI demo*
 
 
-![](../../../../images/karadamedica6.jpg)
+![](images/karadamedica6.jpg)
 *Figure 6: Automated Load Testing* 
 
 Tsuyoshi, who is an Agile coach, discussed with the Product Owner and UCD ways to eliminate wastefulness in the idealization process and how to make user stories with UCD.
@@ -168,26 +168,26 @@ We imported the source code from production into Visual Studio Team Services and
 
 Then we moved on to WebApps. They were using Cloud Services for web and batch execution. How should we move from Cloud Services to WebApps? We discussed both web and batch architecture and then began hacking.
 
-![](../../../../images/karadamedica7.jpg)
+![](images/karadamedica7.jpg)
 *Figure 7: Hacking*
 
 Using VSTS, we successfully created a build definition for WebApps. However, our current application was for Cloud Services. When we tried to deploy it to WebApps, we encountered an error: "Conflict: Website with given name xxx-webapps already exists." It was unusual, but it was a known bug. (See Azure Deployment to Web App - Conflict: Website with given name <web app name> already exists.) We set the Remove Visual Studio version to 2013 and switched Remote debugging off and on. Then we were able to deploy apps on WebApps.
 
-![](../../../../images/karadamedica8.jpg)
+![](images/karadamedica8.jpg)
 *Figure 8: Application settings for the "already exists" problem*
 
 We faced one more obstacle. After deploying the application, we got another error: "Server Error in '/' Application." Upgrading Azure SDK from version 2.6 to 2.8 resolved this.
 
 At the same time, Akiko, the product owner, hacked Software Kanban of VSTS. Masaki helped and arranged the Kanban. Also, she learned how to use the feedback client and exploratory testing tool.
 
-![](../../../../images/karadamedica9.png)
+![](images/karadamedica9.png)
 *Figure 9: Exploratory testing*
 
 On the final day, we discussed the handoff process between UCD and Dev, in which UCD created a detailed requirements document and then handed it off to Dev. However, if Dev noticed a problem related to implementation, it went back to UCD, taking more time. They resolved to improve this by revising the process. UCD would write the overview sketch and then Dev would come up with a plan for implementing it.
  
 Also, UCD and Dev had difficulty coming up with user stories. The process had a high failure rate. We discussed this and came up with an action plan that established who is in charge, when the due date is, and how to carry out the plan.
 
-![](../../../../images/karadamedica10.jpg)
+![](images/karadamedica10.jpg)
 *Figure 10: Finishing the Hackfest*
 
 ## Conclusion ##
