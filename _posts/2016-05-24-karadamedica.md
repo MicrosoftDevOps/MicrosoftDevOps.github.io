@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Karadamedica - Integrating DevOps technologies on Azure"
+title:  "Learnings from a DevOps Hackfest with Karadamedica"
 author: "Tsuyoshi Ushio"
 author-link: "#"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
@@ -11,7 +11,7 @@ color: "blue"
 excerpt: This article is aimed a providing a template to create DevOps Hackfest articles.
 ---
 
-# Learning from Hackfest with Karadamedica #
+# Learnings from a DevOps Hackfest with Karadamedica #
 
 Microsoft teamed up with Karadamedica to hack integrated Microsoft DevOps technologies on Azure. The DevOps practices that were implemented during this process were:
 
