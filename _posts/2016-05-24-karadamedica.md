@@ -11,7 +11,7 @@ color: "blue"
 excerpt: This article is aimed a providing a template to create DevOps Hackfest articles.
 ---
 
-# Learnings from a DevOps Hackfest with Karadamedica #
+## Learnings from a DevOps Hackfest with Karadamedica ##
 
 Microsoft teamed up with Karadamedica to hack integrated Microsoft DevOps technologies on Azure. The DevOps practices that were implemented during this process were:
 
