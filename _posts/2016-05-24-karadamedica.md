@@ -55,10 +55,10 @@ The part-time team included:
 
 Support members included:
 
-- Tsuyoshi Ushio, Microsoft Senior Technical Evangelist (DevOps)  
+- Tsuyoshi Ushio(@sandayuu), Microsoft Senior Technical Evangelist (DevOps)  
 - Daisuke Kozuka, Microsoft Technical Evangelist – IT Pro (Azure, VSTS, Power BI) 
-- Junichi Anno, Microsoft Principal Technical Evangelist – IT Pro (AD, PowerShell)  
-- Naoki (NEO) Sato, Microsoft Senior Technical Evangelist – IT Pro (Azure)  
+- Junichi Anno(@junichia), Microsoft Principal Technical Evangelist – IT Pro (AD, PowerShell)  
+- Naoki (NEO) Sato(@satonaoki), Microsoft Senior Technical Evangelist – IT Pro (Azure)  
 - Masaki Takeda, Microsoft Tech Solutions Professional (VSTS)
 
 
