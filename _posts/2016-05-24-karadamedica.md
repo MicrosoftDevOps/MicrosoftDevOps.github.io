@@ -8,7 +8,7 @@ date:   2016-05-24
 categories: DevOps
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
-excerpt: This article is aimed a providing a template to create DevOps Hackfest articles.
+excerpt: Microsoft teamed up with Karadamedica to hack integrated Microsoft DevOps technologies on Azure.
 ---
 
 ## Learnings from a DevOps Hackfest with Karadamedica ##
