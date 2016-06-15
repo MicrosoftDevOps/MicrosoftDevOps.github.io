@@ -21,7 +21,6 @@ Intro statement with bulleted lists of:
 * Running selenium tests with Nightwatch.js automatically in a build
 * Load Tests
 * Deploy cloud environment
-* LaunchDarkly
 * container?
 
  
@@ -72,11 +71,10 @@ These selenium tests are written using NightWatch.js which is an awesome library
 
 ** run on selemium vs chrome on custom agent?**
 
-# LaunchDarkly
+# Redux-appinsights
 
-The front-end team already started experimenting with feature flags into their application, which is really cool to see. The current flags where only based on a query string, so it didn't really offer much control and granularity.
-We decided to give a try to LaunchDarkly.
-
+When dealing with a big lead time, wastes or mistakes that happens at the beginning of the pipeline are very costly since they potentially impact weeks of work.
+We decided to implement some user telemetry to know which features where used and which were not. That way the product management's team will have concrete data to help them make sure the team is working on something that actually delivers value to the end customer.
 
  
 ## Conclusion ##
