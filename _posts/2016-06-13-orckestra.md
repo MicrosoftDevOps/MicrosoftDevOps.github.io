@@ -48,9 +48,7 @@ Describe how the problems have been identified and what is the current situation
  
 ## Solutions, Steps, and Delivery ##
 
-
 Value Stream Mapping description and how it helped in the exercise
-
 
 DevOps practice area improved (source code snippets, pictures, drawings)
 
@@ -61,12 +59,31 @@ DevOps practice area improved (source code snippets, pictures, drawings)
 	Pointers to references or documentation 
 	
 	Learnings from the Microsoft team and the customer team
+	
+
+# NightWatch.js
+
+The QA team does a lot of test manually, which of course take some time and is prone to mistakes. We quickly spotted that we could run some existing selenium UI tests automatically during the build process.
+
+These selenium tests are written using NightWatch.js which is an awesome library to do end-to-end testing in node.js.
+
+[Test example here]
+[Test output on console here]
+
+** run on selemium vs chrome on custom agent?**
+
+# LaunchDarkly
+
+The front-end team already started experimenting with feature flags into their application, which is really cool to see. The current flags where only based on a query string, so it didn't really offer much control and granularity.
+We decided to give a try to LaunchDarkly.
+
+
  
 ## Conclusion ##
 
-Time or cost savings metrics resulting from the implementation of the solution
+The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involves, but it really helped the team see the big picture, and understand what concretly happens outside of their own day to day assignations.
 
-Changes in the company culture or their organization
+A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this, which promise a bright future for Orckestra! 
 
 
 
