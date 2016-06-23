@@ -80,13 +80,53 @@ Once the mapping complete, the map was moved in a place where everyone could see
 
 ## Solutions, Steps, and Delivery ##
 
-### Functional Testing
-**NightWatch.js**
+### Functional UI Testing
 
-The QA team does a lot of test manually, which of course take some time and is prone to mistakes. We quickly spotted that we could run some existing selenium UI tests automatically during the build process.
+The QA team does a lot of test manually, which of course take some time and is prone to mistakes. 
+On one of Orckestra's front end application some functional tests were already in place.
+We decided to use the same approach, and to also make those tests part of the continuous integration pipeline, faster feedback is always better.
 
-These selenium tests are written using NightWatch.js which is an awesome library to do end-to-end testing in node.js.
+These tests are written in Node.js and use [Nigthwatch.js](http://nightwatchjs.org/) to interact with the UI (behind the scene, Nightwatch.js uses [Selenium](http://www.seleniumhq.org/)).
+Nightwatch is very easy to use, here is a sample test:
 
+{% highlight javascript %}
+describe('Google demo test for Mocha', function() {
+
+  describe('with Nightwatch', function() {
+
+    before(function(client, done) {
+      done();
+    });
+
+    after(function(client, done) {
+      client.end(function() {
+        done();
+      });
+    });
+
+    afterEach(function(client, done) {
+      done();
+    });
+
+    beforeEach(function(client, done) {
+      done();
+    });
+
+    it('uses BDD to run the Google simple test', function(client) {
+      client
+        .url('http://google.com')
+        .expect.element('body').to.be.present.before(1000);
+
+      client.setValue('input[type=text]', ['nightwatch', client.Keys.ENTER])
+        .pause(1000)
+        .assert.containsText('#main', 'Night Watch');
+    });
+  });
+});
+{% endhighlight %} 
+
+
+Nightwatch will then output a JUnit test report that can be imported by VSTS.
 [Test example here]
 [Test output on console here]
 
@@ -96,11 +136,52 @@ These selenium tests are written using NightWatch.js which is an awesome library
 
 ### User Telemetry
 
-**Redux-appinsights**
-
 When dealing with a big lead time, wastes or mistakes that happens at the beginning of the pipeline are very costly since they potentially impact weeks of work.
-We decided to implement some user telemetry to know which features where used and which were not. That way the product management's team will have concrete data to help them make sure the team is working on something that actually delivers value to the end customer.
+We decided to implement some user telemetry to know which features where used and which were not. 
+That way the product management's team will have concrete data to help them make sure the team is working on something that delivers tangible value to the end customer.
 
+Our goal was to be able to monitor the usage of the different features of one of the front-end application built in JavaScript (Angular.js) as a start.
+This application also use [Redux](https://github.com/reactjs/redux), a library that serves as an alternative to the MVC pattern and helps writea applications in a more coherent manner.
+In Redux every event (a user clicking a button, a response from the server, etc.) is known as an [action](http://redux.js.org/docs/basics/Actions.html) and is described via a plain javascript object.
+Each action as a `type`, and may have additional properties describing the event. For example, an action describing a user adding a comment might look like that:
+
+{% highlight text %}
+{
+  type: 'ADD_COMMENT',
+  text: 'This is a comment'
+}
+{% endhighlight %} 
+
+This action is then dispatched to allow the system to react accordingly (for example, updating a counter of the number of comments).
+One interesting property of Redux, is that every action will always go through a component known as the `dispatcher` first. 
+This means that we can add a custom hook to the `dispatcher` to monitor all the `actions` going through the system. This kind of hooks are known as a [middleware](http://redux.js.org/docs/advanced/Middleware.html).
+
+We decided to build a custom `middleware` that will send the `actions` to Application Insights on Azure. This would allow for precise usage monitoring of the features.
+You can find the finished and reusable middleware [on GitHub](https://github.com/wbuchwalter/redux-appinsights).
+
+First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal and add it to our application.  
+Then we plug our custom `middleware` into the application, the only thing left to do is define which `actions` we want to track. 
+We could log every action that occurs, but too much logging is like no logging at all because it becomes harder to find meaningful informations (See [Jeff Atwood's post on the subject](https://blog.codinghorror.com/the-problem-with-logging/)).
+
+To mark an `action` as of interest we simply have to append the object:
+
+{% highlight text %}
+{
+  type: 'ADD_COMMENT',
+  text: 'This is a comment',
+  meta: {
+    appInsights: { trackPayload: true}
+  }
+}
+{% endhighlight %} 
+
+We can see that our `actions` are correctly received by Application Insights.
+
+![Application Insight Image](/images/orckestra1.png)
+ 
+A good practice could be to define our expectation before rolling out a new feature, for example : "We expect 10% of our user to post a comment (our new feature) once a day".
+With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occured.
+Comparing our expectations with the reality, we could then decide which direction to take next.
 
 ## Looking Ahead
 
