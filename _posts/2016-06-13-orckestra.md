@@ -23,16 +23,16 @@ During this event we discussed different DevOps practices that could positively 
 
 Many people from Orckestra were involved during the value stream mapping, but here is the core hack team:
 
-* Nicolas Rose
-* Maxime Beaudry
-* Stephane Lapointe (MVP)
-* Stephane Larocque
-* Guillaume Salles
-* Simon Michaud
-* Guillaume Raymond
-* Michael Bouchard
-* William Buchwalter 
-* Julien Stroheker
+* Maxime Beaudry - Senior Developer
+* Nicolas Rose - Director of Software Engeneering
+* Stephane Lapointe - Cloud Solution Architect, and Microsoft Azure Most Valuable Professional
+* Stephane Larocque - Senior Developer
+* Guillaume Salles - UI Architect
+* Simon Michaud - Automation Team Lead
+* Guillaume Raymond - Solutions Architect
+* Michael Bouchard - Senior Developer
+* William Buchwalter ([@wbuchw](http://twitter.com/wbuchw)) - Technical Evangelist at Microsoft
+* Julien Stroheker ([@Ju_Stroh](http://twitter.com/ju_stroh)) - Technical Evangelist at Microsoft
 
  
 ## Customer Profile ##
@@ -65,16 +65,18 @@ A package containing both team's work is then delivered in production.
 While necessary today, this approach means there is no easy way for the platform team to ship an update directly in production, even if no new features or breaking changes were made.
 Consequently, delivering a new feature in production takes around 28 weeks, which is much longer that Orckestra's goal.
 
-It was decided to work on two different aspects during the hackfest:
+It was decided to work on two different aspects during the hackfest:  
 
-* 1 - Improving the lead time of the current process. This a short/medium term objective. While not ideal, the current process cannot be changed in a matter of days, so it needs to be improved.
-Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following points:
-	* Load tests: Currently load testing takes around 2 days, is done manually and has a scrap rate of 95%, this is a huge time investment. We worked on automating and simplifying it.
-	* Functional tests: While some parts of the front-end already have functional tests, it is not automated. We wanted to change that so that it's part of the continuous integration.
-	* User telemetry: This is something Orckestra already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it allows to prioritize work more efficiently.
-* 2- Exploring a new process: Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs.
-	* Micro-services architecture: How could the OCC be split into smaller independant parts?
-	* Containers: Among other things, containers would allow easier deployments, and a consistent environment from development to production.
+* First, improving the lead time of the current process. This a short/medium term objective. While not ideal, the current process cannot be changed in a matter of days, so it needs to be improved.  
+Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following points:  
+
+	* Load tests: Currently load testing takes around 2 days, is done manually and has a scrap rate of 95%, this is a huge time investment. We worked on automating and simplifying it.  
+	* Functional tests: While some parts of the front-end already have functional tests, it is not automated. We wanted to change that so that it's part of the continuous integration.  
+	* User telemetry: This is something Orckestra already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it allows to prioritize work more efficiently.  
+* Second, exploring a new process: Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs.  
+
+	* Micro-services architecture: How could the OCC be split into smaller independant parts?  
+	* Containers: Among other things, containers would allow easier deployments, and a consistent environment from development to production.  
 
 Once the mapping complete, the map was moved in a place where everyone could see and discuss it.
 
@@ -218,8 +220,9 @@ The Value Stream Mapping was a challenging activity considering the complexity o
 A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this, which promise a bright future for Orckestra! 
 
 ## Resources ##
-* .NET Core
-* Service Fabric
-* Azure container Services
-* Docker Swarm 1.12 (David videos?)
+* [Orchestrating containers with service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
+* [Azure container Services](https://azure.microsoft.com/en-us/services/container-service/)
+* [Running Docker Swarm on Microsoft Azure (channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
+* [Mesosphere on Azure](https://mesosphere.com/azure/)
+* [.NET Core 1.0](https://www.microsoft.com/net/core)
 
