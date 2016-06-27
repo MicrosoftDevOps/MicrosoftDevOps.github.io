@@ -185,8 +185,31 @@ Comparing our expectations with the reality, we could then decide which directio
 
 ## Looking Ahead
 
+Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
+As this will be a long lasting project, we only touched the surface during this Hackfest.
+
 ### Micro Services & Containers
-	
+
+As we saw during the Value Stream Mapping, the monolithic nature of the platform prevents from releasing very often. Since there is no isolation between components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
+Consequently, a first step might to extract one component after the other from the monolith. 
+This is easier said than done, but the whole team was convinced the long term return on investment outweights the upfront refactoring cost.
+
+We also took some time investigating containerization of those independents components.
+Indeed, this would further reduce the lead time by adressing several pain points:  
+
+* The solution currently takes quite some time to install
+* Scaling 
+* Provsioning / Deprovisioning of integration environments when needed
+* Integration test scrap rate because of different environments: container would ensure same image as in prod
+* Easier deployment: rollback are really easy -> less risk deploying
+
+Of course, there is no free lunch: ....
+
+The platform is currently running on .NET `4.5.3` so containers will need to use Windows Server Core as base image since Nano only support .NET Core.
+The size of the images (around 9GB for a Server Core image) should not be too problematic thanks to Docker's cache.
+
+Docker Swarm could then be used to orchestrate the different containers. DC/OS should also support windows containers in the future.
+But this is a discussion for another time!
  
 ## Conclusion ##
 
@@ -194,12 +217,9 @@ The Value Stream Mapping was a challenging activity considering the complexity o
 
 A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this, which promise a bright future for Orckestra! 
 
-
-
-## General lessons ##
-Bulleted list of insights the Hackfest team came away with
-
-What can be applied or reused in other environments or other customers ?
-
 ## Resources ##
-Links to additional resource (documentation, blog posts, github repos, ...)
+* .NET Core
+* Service Fabric
+* Azure container Services
+* Docker Swarm 1.12 (David videos?)
+
