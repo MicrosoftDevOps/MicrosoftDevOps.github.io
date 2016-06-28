@@ -221,8 +221,16 @@ But this is a discussion for another time!
 
 The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it really helped the team see the big picture, and understand what really happens outside of their own day to day assignations.
 
+A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this.
 
-A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this, which promise a bright future for Orckestra! 
+
+## General Lessons ##  
+  
+* Automated testing needs to always be a top priority. From unit tests to integration and load tests. Being confident in the quality of our code is a prerequisite in order to release it.
+* Monolithic applications work, and can be optimized to a certain extent, but continuous delivery and small batch size can only be obtained by having smaller components with well defined boundaries.
+
+While we discussed a specific implementation of microservices (containers) there is no silver bullet, and many other solutions exists to achieve a comparable result such as [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/).
+
 
 ## Resources ##
 * [Orchestrating containers with service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
