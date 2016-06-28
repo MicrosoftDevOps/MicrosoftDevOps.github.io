@@ -45,27 +45,37 @@ seamless shopping experiences for their customers online, on mobile and in store
 
 ### Architecture Overview
 
-Currently, OCC is a monolitic application that run on multiple virtual machines on Azure. 
+Currently, OCC is a monolithic system that run on multiple virtual machines on Azure (IaaS). 
 Each customer has it's dedicated OCC infrastructure, and the number of VMs can vary based on the size of the customer.
 
 ## Problem Statement ##
 
 The first day and a half was about establishing a Value Stream Map of the current delivery process, from conception to production.
-This activity generated great discussions among the team and allow everyone to see the big picture and not only their part of the process.
+This activity generated great discussions among the team and allowed everyone to see the big picture and not only their part of the process.
 
-![Value Stream Mapping]()
+<img src="/images/orckestra2.jpg" alt="Value Stream Mapping" style="width: 90%;"/>
 
-While we can see that Orckestra already has a lot of DevOps practices in place, the team has larger ambitions.
+This map is quite imposing, indeed there are actually two teams working sequentially to deliver the final product.  
+The first team is working on the core platform (OCC), features that are common to every customers. It's processes are described by the top row in the above picture.   
+Once done, another team grab the OCC's package and add features specific to a given customer on top of it before releasing a package containing both team's work to the end customer. This processes are described by the bottom row in the picture.  
+This two groups of processes form a single value stream, not two, since no value is delivered until all the above steps are taken one after the other:  
 
-This map is quite big: There is actually two teams working sequentially to deliver the final product.
-The first team is working on the core platform (OCC), features that are common to every customers. 
-Once done, another team grab the OCC's package and add features specific to a given customer on top of it.
-A package containing both team's work is then delivered in production. 
+> A value stream is the sequence of activities required to design, produce, and deliver a good or service to a customer. [...]  
+> Value Stream Mapping - Karen Martin & Mike Osterling
 
 While necessary today, this approach means there is no easy way for the platform team to ship an update directly in production, even if no new features or breaking changes were made.
 Consequently, delivering a new feature in production takes around 28 weeks, which is much longer that Orckestra's goal.
 
-It was decided to work on two different aspects during the hackfest:  
+We can see that Orckestra already has a lot of DevOps practices in place, among which:  
+  
+* **Continuous Integration** : A commit on any branch will trigger a new build on **Visual Studio Team Services** , and run the **unit tests**. 
+* **Integration Tests** : Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (around an hour), multiple commits will be batch together in a single release.
+* **Code Reviews** : Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least one other developer. 
+* **Automated Deployments** : Every night (or on demand) **Jenkins** will deploy the integration and QA environment with the latest available version.
+
+### Hackfest's Objectives ###
+
+We agreed on two objectives for the next 4 days:  
 
 * First, improving the lead time of the current process. This a short/medium term objective. While not ideal, the current process cannot be changed in a matter of days, so it needs to be improved.  
 Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following points:  
@@ -80,6 +90,8 @@ Many suggestions were made on how to optimize it during the Value Stream Mapping
 
 Once the mapping complete, the map was moved in a place where everyone could see and discuss it.
 
+![Value Stream Mapping](/images/orckestra3.jpg)
+
 ## Solutions, Steps, and Delivery ##
 
 ### Functional UI Testing
@@ -89,32 +101,16 @@ On one of Orckestra's front end application some functional tests were already i
 We decided to use the same approach, and to also make those tests part of the continuous integration pipeline, faster feedback is always better.
 
 These tests are written in Node.js and use [Nigthwatch.js](http://nightwatchjs.org/) to interact with the UI (behind the scene, Nightwatch.js uses [Selenium](http://www.seleniumhq.org/)).
-Nightwatch is very easy to use, here is a sample test:
+Nightwatch is very easy to use, here is what a simple test looks like :
 
 {% highlight javascript %}
-describe('Google demo test for Mocha', function() {
+describe('Demo test for Mocha', function() {
 
   describe('with Nightwatch', function() {
 
-    before(function(client, done) {
-      done();
-    });
+    //Removed some code for clarity
 
-    after(function(client, done) {
-      client.end(function() {
-        done();
-      });
-    });
-
-    afterEach(function(client, done) {
-      done();
-    });
-
-    beforeEach(function(client, done) {
-      done();
-    });
-
-    it('uses BDD to run the Google simple test', function(client) {
+    it('uses BDD to run a simple test', function(client) {
       client
         .url('http://google.com')
         .expect.element('body').to.be.present.before(1000);
@@ -127,14 +123,10 @@ describe('Google demo test for Mocha', function() {
 });
 {% endhighlight %} 
 
-
+We load a web page (google.com in this case), check that the page displayed correctly (`body` is present), enter a search term, and finally check that the result contains our expected result.
 Nightwatch will then output a JUnit test report that can be imported by VSTS.
-[Test example here]
-[Test output on console here]
 
-** run on selemium vs chrome on custom agent?**
-
-### Load Testing
+For now we decided to use a custom build agent with Chrome installed on it. But [PhantomJS](http://phantomjs.org/) or similar libraries could be used instead of a real browser, making these tests runnable on a hosted agent.
 
 ### User Telemetry
 
