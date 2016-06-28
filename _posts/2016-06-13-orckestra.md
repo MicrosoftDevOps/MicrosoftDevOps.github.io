@@ -26,11 +26,17 @@ Many people from Orckestra were involved during the value stream mapping, but he
 * Maxime Beaudry - Senior Developer
 * Nicolas Rose - Director of Software Engeneering
 * Stephane Lapointe - Cloud Solution Architect, and Microsoft Azure Most Valuable Professional
-* Stephane Larocque - Senior Developer
+* Stephane Larocque - Senior Developer & Team Lead
 * Guillaume Salles - UI Architect
 * Simon Michaud - Automation Team Lead
 * Guillaume Raymond - Solutions Architect
 * Michael Bouchard - Senior Developer
+* Phillipe Ouimet - Platform Architect
+* Marion Roche - Senior Developer
+* Nicolas Gauthier -  Senior Developer & Team Lead
+* Christian Rousseau - Principal Infrastructure Architect
+* Mélanie Gillet - Senior Developer & Team Lead
+* Julie Gueho - Product Owner
 * William Buchwalter ([@wbuchw](http://twitter.com/wbuchw)) - Technical Evangelist at Microsoft
 * Julien Stroheker ([@Ju_Stroh](http://twitter.com/ju_stroh)) - Technical Evangelist at Microsoft
 
@@ -177,37 +183,44 @@ A good practice could be to define our expectation before rolling out a new feat
 With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occured.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
-## Looking Ahead
+## Looking Ahead: Micro Services & Containers
 
 Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
 As this will be a long lasting project, we only touched the surface during this Hackfest.
 
-### Micro Services & Containers
+As we saw during the Value Stream Mapping, in the current state of things, everything is part of single huge value stream.
+Ideally this stream should be splitted into several (at least two) smaller ones:  
 
-As we saw during the Value Stream Mapping, the monolithic nature of the platform prevents from releasing very often. Since there is no isolation between components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
-Consequently, a first step might to extract one component after the other from the monolith. 
+* A value stream for the platform (OCC): any non-breaking update to the core system should be releasable very easily and on it's own.
+* Another one for delivering the custom features of each client.
+
+The monolithic nature of the platform prevents it from being released often. Since there is no isolation between components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
+Consequently, a first (long) step might to extract one component after the other from the monolith.  
 This is easier said than done, but the whole team was convinced the long term return on investment outweights the upfront refactoring cost.
+
+In the future, each components could be shipped separatly (meaning each one would have an associated value stream). Microservices are a great way to enforce the [small batch size principle](http://www.scaledagileframework.com/visualize-and-limit-wip-reduce-batch-sizes-and-manage-queue-lengths/).
 
 We also took some time investigating containerization of those independents components.
 Indeed, this would further reduce the lead time by adressing several pain points:  
 
-* The solution currently takes quite some time to install
-* Scaling 
-* Provsioning / Deprovisioning of integration environments when needed
-* Integration test scrap rate because of different environments: container would ensure same image as in prod
-* Easier deployment: rollback are really easy -> less risk deploying
+* Ensuring integration tests are running in a production-like environments. Also a significant cause of scrap rate for integration tests are caused by environments heterogeneity.
+* Faster deployments: only the image of the component that was updated needs to be redeployed
+* Easier scaling in production: With tools such as Docker Swarm, scaling becomes almost painless (for stateless components) 
+* Greater flexibility of integration and QA environments deployment: provisioning and de-provisioning of environment becomes an extremly fast process.
 
-Of course, there is no free lunch: ....
+Of course, there is no free lunch. While providing many advantages, microservices are complex. Dependencies are harder to manage correctly, breaking changes becomes difficult to handle.
+Generally speaking, microservices demand a lot more discipline with regard to tests, deployments and API design.
 
 The platform is currently running on .NET `4.5.3` so containers will need to use Windows Server Core as base image since Nano only support .NET Core.
 The size of the images (around 9GB for a Server Core image) should not be too problematic thanks to Docker's cache.
 
-Docker Swarm could then be used to orchestrate the different containers. DC/OS should also support windows containers in the future.
+Docker Swarm could then be used to orchestrate the different containers. DC/OS should also support windows containers in a not too distant future.
 But this is a discussion for another time!
  
 ## Conclusion ##
 
-The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involves, but it really helped the team see the big picture, and understand what concretly happens outside of their own day to day assignations.
+The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it really helped the team see the big picture, and understand what really happens outside of their own day to day assignations.
+
 
 A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this, which promise a bright future for Orckestra! 
 
