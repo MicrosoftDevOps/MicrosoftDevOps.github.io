@@ -74,7 +74,7 @@ Consequently, delivering a new feature in production takes around 28 weeks, whic
 
 We can see that Orckestra already has a lot of DevOps practices in place, among which:  
   
-* **Continuous Integration**: A commit on any branch will trigger a new build on **Visual Studio Team Services** , and run the **unit tests**. 
+* **Continuous Integration**: A commit on any branch will trigger a new build on **Visual Studio Team Services**, and run the **unit tests**. 
 * **Integration Tests**: Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (around an hour), multiple commits will be batch together in a single release.
 * **Code Reviews**: Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least one other developer. 
 * **Automated Deployments**: Every night (or on demand) **Jenkins** will deploy the integration and QA environment with the latest available version.
@@ -179,7 +179,7 @@ We can see that our `actions` are correctly received by Application Insights.
 
 ![Application Insight Image](/images/orckestra1.png)
  
-A good practice could be to define our expectation before rolling out a new feature, for example : "We expect 10% of our user to post a comment (our new feature) once a day".
+A good practice could be to define our expectation before rolling out a new feature, for example: "We expect 10% of our user to post a comment (our new feature) once a day".
 With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
