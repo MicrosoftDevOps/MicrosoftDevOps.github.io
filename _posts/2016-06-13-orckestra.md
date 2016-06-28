@@ -52,7 +52,7 @@ seamless shopping experiences for their customers online, on mobile and in store
 ### Architecture Overview
 
 Currently, OCC is a monolithic system that run on multiple virtual machines on Azure (IaaS). 
-Each customer has it's dedicated OCC infrastructure, and the number of VMs can vary based on the size of the customer.
+Each customer has its dedicated OCC infrastructure, and the number of VMs can vary based on the size of the customer.
 
 ## Problem Statement ##
 
@@ -62,7 +62,7 @@ This activity generated great discussions among the team and allowed everyone to
 <img src="/images/orckestra2.jpg" alt="Value Stream Mapping" style="width: 90%;"/>
 
 This map is quite imposing, indeed there are actually two teams working sequentially to deliver the final product.  
-The first team is working on the core platform (OCC), features that are common to every customers. It's processes are described by the top row in the above picture.   
+The first team is working on the core platform (OCC), features that are common to every customers. Its processes are described by the top row in the above picture.   
 Once done, another team grab the OCC's package and add features specific to a given customer on top of it before releasing a package containing both team's work to the end customer. This processes are described by the bottom row in the picture.  
 This two groups of processes form a single value stream, not two, since no value is delivered until all the above steps are taken one after the other:  
 
@@ -74,10 +74,10 @@ Consequently, delivering a new feature in production takes around 28 weeks, whic
 
 We can see that Orckestra already has a lot of DevOps practices in place, among which:  
   
-* **Continuous Integration** : A commit on any branch will trigger a new build on **Visual Studio Team Services** , and run the **unit tests**. 
-* **Integration Tests** : Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (around an hour), multiple commits will be batch together in a single release.
-* **Code Reviews** : Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least one other developer. 
-* **Automated Deployments** : Every night (or on demand) **Jenkins** will deploy the integration and QA environment with the latest available version.
+* **Continuous Integration**: A commit on any branch will trigger a new build on **Visual Studio Team Services** , and run the **unit tests**. 
+* **Integration Tests**: Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (around an hour), multiple commits will be batch together in a single release.
+* **Code Reviews**: Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least one other developer. 
+* **Automated Deployments**: Every night (or on demand) **Jenkins** will deploy the integration and QA environment with the latest available version.
 
 ### Hackfest's Objectives ###
 
@@ -107,7 +107,7 @@ On one of Orckestra's front end application some functional tests were already i
 We decided to use the same approach, and to also make those tests part of the continuous integration pipeline, faster feedback is always better.
 
 These tests are written in Node.js and use [Nigthwatch.js](http://nightwatchjs.org/) to interact with the UI (behind the scene, Nightwatch.js uses [Selenium](http://www.seleniumhq.org/)).
-Nightwatch is very easy to use, here is what a simple test looks like :
+Nightwatch is very easy to use, here is what a simple test looks like:
 
 {% highlight javascript %}
 describe('Demo test for Mocha', function() {
@@ -132,7 +132,7 @@ describe('Demo test for Mocha', function() {
 We load a web page (google.com in this case), check that the page displayed correctly (`body` is present), enter a search term, and finally check that the result contains our expected result.
 Nightwatch will then output a JUnit test report that can be imported by VSTS.
 
-For now we decided to use a custom build agent with Chrome installed on it. But [PhantomJS](http://phantomjs.org/) or similar libraries could be used instead of a real browser, making these tests runnable on a hosted agent.
+For now, we decided to use a custom build agent with Chrome installed on it. But [PhantomJS](http://phantomjs.org/) or similar libraries could be used instead of a real browser, making these tests runnable on a hosted agent.
 
 ### User Telemetry
 
@@ -141,8 +141,8 @@ We decided to implement some user telemetry to know which features where used an
 That way the product management's team will have concrete data to help them make sure the team is working on something that delivers tangible value to the end customer.
 
 Our goal was to be able to monitor the usage of the different features of one of the front-end application built in JavaScript (Angular.js) as a start.
-This application also use [Redux](https://github.com/reactjs/redux), a library that serves as an alternative to the MVC pattern and helps writea applications in a more coherent manner.
-In Redux every event (a user clicking a button, a response from the server, etc.) is known as an [action](http://redux.js.org/docs/basics/Actions.html) and is described via a plain javascript object.
+This application also use [Redux](https://github.com/reactjs/redux), a library that serves as an alternative to the MVC pattern and helps write applications that behave consistently.
+In Redux every event (a user clicking a button, a response from the server, etc.) is known as an [action](http://redux.js.org/docs/basics/Actions.html) and is described via a plain JavaScript object.
 Each action as a `type`, and may have additional properties describing the event. For example, an action describing a user adding a comment might look like that:
 
 {% highlight text %}
@@ -161,7 +161,7 @@ You can find the finished and reusable middleware [on GitHub](https://github.com
 
 First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal and add it to our application.  
 Then we plug our custom `middleware` into the application, the only thing left to do is define which `actions` we want to track. 
-We could log every action that occurs, but too much logging is like no logging at all because it becomes harder to find meaningful informations (See [Jeff Atwood's post on the subject](https://blog.codinghorror.com/the-problem-with-logging/)).
+We could log every action that occurs, but too much logging is like no logging at all because it becomes harder to find meaningful information (See [Jeff Atwood's post on the subject](https://blog.codinghorror.com/the-problem-with-logging/)).
 
 To mark an `action` as of interest we simply have to append the object:
 
@@ -180,7 +180,7 @@ We can see that our `actions` are correctly received by Application Insights.
 ![Application Insight Image](/images/orckestra1.png)
  
 A good practice could be to define our expectation before rolling out a new feature, for example : "We expect 10% of our user to post a comment (our new feature) once a day".
-With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occured.
+With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
 ## Looking Ahead: Micro Services & Containers
@@ -189,24 +189,24 @@ Part of the hacking team spent some time looking at how to improve the value str
 As this will be a long lasting project, we only touched the surface during this Hackfest.
 
 As we saw during the Value Stream Mapping, in the current state of things, everything is part of single huge value stream.
-Ideally this stream should be splitted into several (at least two) smaller ones:  
+Ideally this stream should be split into several (at least two) smaller ones:  
 
 * A value stream for the platform (OCC): any non-breaking update to the core system should be releasable very easily and on it's own.
 * Another one for delivering the custom features of each client.
 
 The monolithic nature of the platform prevents it from being released often. Since there is no isolation between components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
 Consequently, a first (long) step might to extract one component after the other from the monolith.  
-This is easier said than done, but the whole team was convinced the long term return on investment outweights the upfront refactoring cost.
+This is easier said than done, but the whole team was convinced the long term return on investment outweighs the upfront refactoring cost.
 
-In the future, each components could be shipped separatly (meaning each one would have an associated value stream). Microservices are a great way to enforce the [small batch size principle](http://www.scaledagileframework.com/visualize-and-limit-wip-reduce-batch-sizes-and-manage-queue-lengths/).
+In the future, each component could be shipped separately (meaning each one would have an associated value stream). Microservices are a great way to enforce the  [small batch size principle](http://www.scaledagileframework.com/visualize-and-limit-wip-reduce-batch-sizes-and-manage-queue-lengths/).
 
 We also took some time investigating containerization of those independents components.
-Indeed, this would further reduce the lead time by adressing several pain points:  
+Indeed, this would further reduce the lead time by addressing several pain points:  
 
 * Ensuring integration tests are running in a production-like environments. Also a significant cause of scrap rate for integration tests are caused by environments heterogeneity.
 * Faster deployments: only the image of the component that was updated needs to be redeployed
 * Easier scaling in production: With tools such as Docker Swarm, scaling becomes almost painless (for stateless components) 
-* Greater flexibility of integration and QA environments deployment: provisioning and de-provisioning of environment becomes an extremly fast process.
+* Greater flexibility of integration and QA environments deployment: provisioning and de-provisioning of environment becomes an extremely fast process.
 
 Of course, there is no free lunch. While providing many advantages, microservices are complex. Dependencies are harder to manage correctly, breaking changes becomes difficult to handle.
 Generally speaking, microservices demand a lot more discipline with regard to tests, deployments and API design.
