@@ -62,8 +62,8 @@ This activity generated great discussions among the team and allowed everyone to
 <img src="/images/orckestra2.jpg" alt="Value Stream Mapping" style="width: 90%;"/>
 
 This map is quite imposing, indeed there are actually two teams working sequentially to deliver the final product.  
-The first team is working on the core platform (OCC), features that are common to every customers. Its processes are described by the top row in the above picture.   
-Once done, another team grab the OCC's package and add features specific to a given customer on top of it before releasing a package containing both team's work to the end customer. This processes are described by the bottom row in the picture.  
+The first team (Product Core Team) is working on the core platform (OCC), features that are common to every customers. Its processes are described by the top row in the above picture.   
+Once done, another team (Product Implementation Team) grab the OCC's package and add features specific to a given customer on top of it before releasing a package containing both team's work to the end customer. These processes are described by the bottom row in the picture.  
 This two groups of processes form a single value stream, not two, since no value is delivered until all the above steps are taken one after the other:  
 
 > A value stream is the sequence of activities required to design, produce, and deliver a good or service to a customer. [...]  
@@ -76,7 +76,7 @@ We can see that Orckestra already has a lot of DevOps practices in place, among 
   
 * **Continuous Integration**: A commit on any branch will trigger a new build on **Visual Studio Team Services**, and run the **unit tests**. 
 * **Integration Tests**: Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (around an hour), multiple commits will be batch together in a single release.
-* **Code Reviews**: Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least one other developer. 
+* **Code Reviews**: Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least two other people (technical and business). 
 * **Automated Deployments**: Every night (or on demand) **Jenkins** will deploy the integration and QA environment with the latest available version.
 
 ### Hackfest's Objectives ###
@@ -91,7 +91,7 @@ Many suggestions were made on how to optimize it during the Value Stream Mapping
 	* User telemetry: This is something Orckestra already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it allows to prioritize work more efficiently.  
 * Second, exploring a new process: Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs.  
 
-	* Micro-services architecture: How could the OCC be split into smaller independant parts?  
+	* Microservices architecture: How could the OCC be split into smaller independent parts?  
 	* Containers: Among other things, containers would allow easier deployments, and a consistent environment from development to production.  
 
 Once the mapping complete, the map was moved in a place where everyone could see and discuss it.
@@ -183,7 +183,7 @@ A good practice could be to define our expectation before rolling out a new feat
 With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
-## Looking Ahead: Micro Services & Containers
+## Looking Ahead: MicroServices & Containers
 
 Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
 As this will be a long lasting project, we only touched the surface during this Hackfest.
