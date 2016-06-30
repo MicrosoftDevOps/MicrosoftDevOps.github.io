@@ -4,7 +4,7 @@ title:  "Learnings from a DevOps Hackfest with Orckestra"
 author: "William Buchwalter & Julien Stroheker"
 author-link: "#"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
-date:   2016-06-13
+date:   2016-06-30
 categories: DevOps
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
