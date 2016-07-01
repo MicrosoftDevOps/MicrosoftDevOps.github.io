@@ -33,7 +33,7 @@ We quickly concluded that we needed to conduct a Value Stream Mapping exercise t
 
 The following diagram shows the outcome of the Value Stream Mapping exercise at this PSP; the red notes are the identified areas of improvement. From this exercise we learned that this organization had challenges with testing and the release process.
 
-![](/images/LeadingPSP_1.jpg)
+![](/images/LeadingPSP_1.png)
 
 Testing had several challenges:  
 
@@ -106,7 +106,7 @@ Below is a simple example of a unit test written in Microsoft Visual Studio (rea
     }
 
 Here is a sample of a real test execution at a developer workstation:
-![](/images/LeadingPSP_2.jpg)
+![](/images/LeadingPSP_2.png)
 
 Tests were then submitted to the codebase as part of the source code and sent to a central repository. For the Hackfest, the team used Visual Studio Team Services (VSTS) to run the tests as part of the build process. In a DevOps world, this is called *Continuous Integration*.
 
@@ -138,7 +138,7 @@ The first step was to download the source code and all necessary dependencies:
 
 **Azure Resource Group Deployment.** Removes the SQL Server and all data, and cleans up the entire deployment created earlier.
 
-![](/images/LeadingPSP_3.jpg)
+![](/images/LeadingPSP_3.png)
 
 The rest of the build tasks then clean up the environment and publish build artifacts to Visual Studio Team Services (for later deployment).
 
@@ -146,7 +146,7 @@ The result of using a cloud-hosted build system is that all testing runs in the 
 
 The automated test runs for 6-7 minutes in this case and the use of a SQL Server in Azure takes about 5 minutes.
 
-![](/images/LeadingPSP_4.jpg)
+![](/images/LeadingPSP_4.png)
 
 This is an example of an Azure Resource Manager deployment template for creating an Azure SQL instance:
 
@@ -256,7 +256,7 @@ Release management
 
 The PSP has a fully automated deployment model, but as the Value Stream Mapping exercise showed, every delivery still had to be handled manually without any linkage to the features being deployed and their status in the delivery process. The hack team decided to showcase the release management capabilities in Visual Studio Team Services (VSTS) that would simply link everything together and give a better outlook of the delivery statuses.
 
-![](/images/LeadingPSP_5.jpg)
+![](/images/LeadingPSP_5.png)
 
 By implementing a release management solution, the team was able to automate the deployment task execution, leveraging the existing PowerShell-based deployment model. This was done by adding deployment scripts to the application source code and having VSTS execute the script with environment-specific parameters, and repeating that task for every environment in the deployment cycle, with a different set of script arguments.
 
@@ -264,7 +264,7 @@ This will give the PSP an automated deployment model, where no scripts are run m
 
 The solution also clearly shows what releases (and features) are currently deployed to each environment by linking work items from Visual Studio´s work management system. This enables product owners to get an overview of when features will be delivered to production. Below is a sample of an application release, and the view of how far a given release is through the deployment pipeline.
 
-![](/images/LeadingPSP_6.jpg)
+![](/images/LeadingPSP_6.png)
 
 With this model in place, the PSP is leveraging cloud-based build, test, and release management tools and deploying to an on-premises hosted environment. This means all customer data is hosted on their own infrastructure, without ever touching the cloud. We achieved this by leveraging the build agent system in Visual Studio Team Services, and deploying an agent to a server on-premises that will work as a deployment server and push new releases to the environments.
 
