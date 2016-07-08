@@ -4,7 +4,7 @@ title:  "Learning from a DevOps Hackfest with a Leading Professoinal Services P
 author: "Rasmus Hald"
 author-link: "#"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
-date:   2016-07-01 20:13:28
+date:   2016-07-01
 categories: Test
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
