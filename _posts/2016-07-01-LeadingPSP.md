@@ -1,3 +1,4 @@
+---
 layout: post
 title:  "Learning from a DevOps Hackfest with a Leading Professoinal Services Provider"
 author: "Rasmus Hald"
@@ -8,6 +9,7 @@ categories: Test
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
 excerpt: In this DevOps Hackfest, Microsoft teamed up with a leading provider of professional services to improve their development processes with a focus on automated testing and release management. We describe the process and the result in this article.
+---
 
 ## Learnings from a DevOps Hackfest with a Leading Professional Services Provider ##
 When a leading multinational professional services provider was looking for ways to improve their development processes, they met with Microsoft to discuss how DevOps could help. Together, they staged a DevOps Hackfest to implement DevOps practices, with a focus on automated testing and release management. 
