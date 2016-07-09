@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Learning from a DevOps Hackfest with a Leading Professoinal Services Provider"
+title: "Learning from a DevOps Hackfest with a Leading Professoinal Services Provider"
 author: "Rasmus Hald"
 author-link: "#"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
-date:   2016-07-01
+date: 2016-07-01
 categories: DevOps
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
