@@ -39,7 +39,7 @@ describe("Check Files modified", function(){
 				it("Verify presence of tags", function () {
 						
 					//frontmatter = /---\s*([\s\S]*?)\s*---/
-					frontmatter = /---\s*((layout:)+)([\s\S]*?)((title:)+)([\s\S]*?)((author:)+)([\s\S]*?)((date:)+)([\s\S]*?)((color: "blue")+)([\s\S]*?)((excerpt:)+)([\s\S]*?)\s*---/
+					frontmatter = /---\s*((layout: )+)([ \r\n\S]*?)((title: )+)([ \r\n\S]*?)((author: )+)([ \r\n\S]*?)((date: )+)([ \r\n\S]*?)((color: "blue")+)([ \r\n\S]*?)((excerpt: )+)([ \r\n\S]*?)\s*---/
 					assert.ok (frontmatter.test(contents));
 
 				});
