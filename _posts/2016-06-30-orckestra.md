@@ -265,7 +265,7 @@ While we discussed a specific implementation of microservices (containers) there
 
 
 ## Resources ##
-* [The Value Stream Mapping in HD](/images/OrckestraVSMHD01Final.png)  
+* [The Value Stream Mapping in HD](/images/orckestra_VSM_HD.jpg)
 * [Orchestrating containers with service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
 * [Azure container Services](https://azure.microsoft.com/en-us/services/container-service/)
 * [Running Docker Swarm on Microsoft Azure (channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
