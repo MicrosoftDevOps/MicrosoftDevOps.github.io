@@ -125,6 +125,12 @@ Behind the scene, we used (TypeScript, Gulp, NPM...)
 
 The fact that the load tests are directly integrated in their pipeline, helps Orckestra to have a stronger application at the end, and makes sure that the tests are ran every time and not manually triggered or forgotten to be ran.
 
+![Load Impact VSTS Extension](../images/OrckestraRelease.png)
+
+Here is an example about the test called "GetGuessCart" launched from VSTS :
+
+![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
+
 We also started to implement the Application Insights feature inside Orckestra Commerce to track the users interactions (see next chapters). In the future, Orckestra will correlate the Load tests data with the User Telemetry one to have deeper results and adapt their load scenarios to anticipate the scale for example.
 
 ### Functional UI Testing
