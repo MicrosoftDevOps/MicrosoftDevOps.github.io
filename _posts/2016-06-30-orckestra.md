@@ -131,6 +131,10 @@ Here is an example about the test called "GetGuessCart" launched from VSTS :
 
 ![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
 
+When the test is done on Load Impact, Orckestra have a slack notification :
+
+![Load Impact VSTS Extension](../images/OrckestraSlack.png)
+
 We also started to implement the Application Insights feature inside Orckestra Commerce to track the users interactions (see next chapters). In the future, Orckestra will correlate the Load tests data with the User Telemetry one to have deeper results and adapt their load scenarios to anticipate the scale for example.
 
 ### Functional UI Testing
