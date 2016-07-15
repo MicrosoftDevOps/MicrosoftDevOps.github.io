@@ -199,8 +199,8 @@ This means we can add a custom hook to the `dispatcher` to monitor all the `acti
 We decided to build a custom `middleware` that will send the `actions` to Application Insights on Azure. This would allow for precise usage monitoring of the features.
 You can find the finished and reusable middleware [on GitHub](https://github.com/wbuchwalter/redux-appinsights).
 
-First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal, and add it to our application.  
-Then we plug our custom `middleware` into the application. After that, the only thing left to do is define which `actions` we want to track. 
+First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal, and add it to our application.  Then we plug our custom `middleware` into the application. After that, the only thing left to do is define which `actions` we want to track. 
+
 We could log every action that occurs, but too much logging is like no logging at all because it becomes harder to find meaningful information (See [Jeff Atwood's post on the subject](https://blog.codinghorror.com/the-problem-with-logging/)).
 
 To mark an `action` as of interest, we simply have to append the object:
@@ -228,49 +228,49 @@ Comparing our expectations with the reality, we could then decide which directio
 Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
 This project will run for an extended period of time and we only touched the surface during this Hackfest.
 
-As of today, the application is build following a single massive value stream. Ideally, in the future, this stream should be split into several (at least two) smaller ones:  
+As of today, the application is built following a single, massive value stream. Ideally, in the future, this stream should be split into at least two smaller ones:  
 
-* A value stream for the platform (OCC): any non-breaking update to the core system should be releasable very easily and on it's own.
+* A value stream for the platform (OCC): Any non-breaking update to the core system should be releasable very easily and on its own.
 * Another one for delivering the custom features of each client.
 
-The monolithic nature of the platform prevents it from being released often. Since there is no isolation between the components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
-Consequently, a first (long) step might be to extract one component after the other from the monolith. This is easier said than done, but the whole team was convinced that the long term return on investment outweighs the upfront refactoring cost.
+The monolithic nature of the platform prevents it from being released often. Because there is no isolation between the components, the QA team has to test every component for each release, since even a small change could have an impact anywhere.
+Consequently, a first (long) step might be to extract one component after the other from the monolith. This is easier said than done, but the whole team was convinced that the long-term return on investment outweighs the upfront refactoring cost.
 
 In the future, each component could be shipped separately (meaning each one would have an associated value stream). Microservices are a great way to enforce the  [small batch size principle](http://www.scaledagileframework.com/visualize-and-limit-wip-reduce-batch-sizes-and-manage-queue-lengths/).
 
-We also took some time investigating containerization of those independents components.
+We also spent some time investigating containerization of those independent components.
 Indeed, this would further reduce the lead time by addressing several pain points:  
 
-* Ensuring integration tests are running in a production-like environments. Also a significant cause of scrap rate for integration tests are caused by environments heterogeneity.
-* Faster deployments: only the image of the component that was updated needs to be redeployed
-* Easier scaling in production: With tools such as Docker Swarm, scaling becomes almost painless (for stateless components) 
-* Greater flexibility of integration and QA environments deployment: provisioning and de-provisioning of environment becomes an extremely fast process.
+* Ensuring integration tests are running in a production-like environment. Also, a significant cause of scrap rate for integration tests is due to heterogeneous environments.
+* Faster deployments. Only the image of the component that was updated needs to be redeployed.
+* Easier scaling in production. With tools such as Docker Swarm, scaling becomes almost painless (for stateless components). 
+* Greater flexibility of integration and QA environments deployment. Provisioning and de-provisioning of environments become an extremely fast process.
 
-Of course, there is no free lunch. While providing many advantages, microservices are complex. Dependencies are harder to manage correctly, breaking changes becomes difficult to handle. Generally speaking, microservices demand a lot more discipline with regard to tests, deployments and API design.
+Of course, there are tradeoffs. While providing many advantages, microservices are complex. Dependencies are harder to manage correctly, breaking changes become difficult to handle. Generally speaking, microservices demand a lot more discipline with regard to tests, deployments, and API design.
 
-The platform is currently running on .NET `4.5.3` so containers will need to use Windows Server Core as base image since Nano only support .NET Core. The size of the images (around 9GB for a Server Core image) should not be too problematic thanks to Docker's cache.
+The platform is currently running on .NET `4.5.3`, so containers will need to use Windows Server Core as a base image since Nano supports only .NET Core. The size of the images (around 9 GB for a Server Core image) should not be too problematic thanks to Docker's cache.
 
-Docker Swarm could then be used to orchestrate the different containers. DC/OS should also support windows containers in a not too distant future. But this is a discussion for another time!
+Docker Swarm could then be used to orchestrate the different containers. DC/OS should also support Windows containers in a not too distant future. But this is a discussion for another time.
  
 ## Conclusion ##
 
-The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it really helped the team see the big picture, and understand what really happens outside of their own day to day assignations.
+The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it really helped the team see the big picture and understand what really happens outside of their own day-to-day roles.
 
-A lot of very interesting ideas on how to improve the process were discussed during this hackfest, some more doable than others, but most importantly, the whole team realize the value of continuously improving and are committed and willing to put a lot of effort into this.
+A lot of very interesting ideas on how to improve the process were discussed during this Hackfest, some more doable than others. Most importantly, though, the whole team realized the value of continuously improving and they are committed and willing to put a lot of effort into this.
 
 
-## General Lessons ##  
+## General lessons ##  
   
 * Automated testing needs to always be a top priority, from unit tests to integration and load tests. Being confident in the quality of the code is a prerequisite in order to release it.
-* Monolithic applications work, and can be optimized to a certain extent, but continuous delivery and small batch size can only be obtained by having smaller components with well defined boundaries.
+* Monolithic applications work, and can be optimized to a certain extent, but continuous delivery and small batch size can be obtained only by having smaller components with well-defined boundaries.
 
-While we discussed a specific implementation of microservices (containers) there is no silver bullet, and many other solutions exists to achieve a comparable result such as [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/).
+While we discussed a specific implementation of microservices (containers), there is no simple solution, and many other solutions such as [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/) exist to achieve a comparable result.
 
 
 ## Resources ##
 * [The Value Stream Mapping in HD](/images/orckestra_VSM_HD.jpg)
-* [Orchestrating containers with service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
-* [Azure container Services](https://azure.microsoft.com/en-us/services/container-service/)
+* [Orchestrating containers with Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
+* [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/)
 * [Running Docker Swarm on Microsoft Azure (channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
 * [Mesosphere on Azure](https://mesosphere.com/azure/)
 * [.NET Core 1.0](https://www.microsoft.com/net/core)
