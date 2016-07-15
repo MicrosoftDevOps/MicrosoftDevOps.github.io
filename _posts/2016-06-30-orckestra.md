@@ -64,8 +64,10 @@ This activity generated great discussions among the team and allowed everyone to
 <img src="/images/orckestra2.jpg" alt="Value Stream Mapping" style="width: 90%;"/>
 
 As the Value Stream Map shows, there are actually two teams working sequentially to deliver the final product.  
-The first team (Product Core Team) is working on the core platform (OCC), features that are common to every customer. Its processes are described by the top row in the image above.   
+The first team (Product Core Team) is working on the core platform (OCC), features that are common to every customer. Its processes are described by the top row in the image above. 
+
 Once done, another team (Product Implementation Team) takes the OCC package and adds features specific to a given customer. A package containing both teams' work is then released to the end customer. These processes are described in the bottom row of the VSM image.  
+
 These two groups of processes form a single value stream, not two, since no value is delivered until all the above steps are taken one after the other:  
 
 > A value stream is the sequence of activities required to design, produce, and deliver a good or service to a customer. [...]  
@@ -109,23 +111,23 @@ Once the mapping was complete, we moved it to a place where everyone could see a
 
 Orckestra has implemented some load tests in the past, using the Test Controllers and Test Agents from Visual Studio running on multiple virtual machines deployed on Azure.
 
-All the scenarios were setup by someone in the company, who left a few months ago, before our Hackfest. This person did not share any documentations about the complex configuration and architecture that he had setup. Last but not least, the results were too complicated to understand, manually trigerred and not very relevant in terms of performance, causing the problematic of the 95% Scrape Rate in the VSM !
+All the scenarios were set up by an Orckestra employee who had left the company prior to our Hackfest, and no documentation about the complex configuration and architecture was available. The results were too complicated to understand, manually triggered, and not very relevant in terms of performance, causing the problematic 95% scrape rate in the VSM.
 
-Aware about the previous statement, the QA team started to rethink the way to do this step a few weeks ago before our intervention, and decided to look at the cloud based solution from LoadImpact.com to generate their web tests on the front-end part and on the API part of the application first.
+Aware of this, the QA team started to rethink this step a few weeks before the Hackfest. They decided to look at the cloud-based solution from [LoadImpact.com](http://www.loadimpact.com) to generate their web tests on the front-end part and on the API part of the application first.
 
-During our hackfest, the QA team took the time to setup some scenarios in their LoadImpact.com subscription, and in the meantime we offered to develop an VSTS extension to automatically start some test scenarios from their VSTS tenant whenever they want in their Build or Release pipeline. With this approach, we proved at Orscketra that everything can be automatized in their stream thanks to some "Hack", for example an extension in this case.
+During our Hackfest, the QA team took the time to set up some scenarios in their LoadImpact.com subscription, and in the meantime we offered to develop a VSTS extension to automatically start some test scenarios from their VSTS tenant whenever they want in their Build or Release pipeline. With this approach, we proved at Orckestra that everything can be automated in their stream thanks to some "hack"; for example, an extension in this case.
 
-So we started [this project on GitHub called : loadimpact-vsts-extension](https://github.com/julienstroheker/loadimpact-vsts-extension)
+So we started [this project on GitHub called loadimpact-vsts-extension](https://github.com/julienstroheker/loadimpact-vsts-extension).
 
-The idea is simple, reach the [LoadImpact.com API](http://developers.loadimpact.com/api/index.html) and start some scenarios already setup whenever they want thanks to a Build or Release step :
+The idea is simple: Reach the [LoadImpact.com API](http://developers.loadimpact.com/api/index.html) and start some scenarios already set up whenever they want thanks to a Build or Release step :
 
 ![Load Impact VSTS Extension](../images/OrckestraLoadImpactExt.png)
 
-For now, this extension is really straighforward but helps Orckestra to launch some recursing tests like :
-* Basics API Calls to check if the important parts of the application are responding with the correct SLA defined ;
-* Basics Web Calls to check if all the componants of the application are responsding ;
+For now, this extension is really straightforward but it helps Orckestra to launch some recursing tests such as:
+* Basics API Calls to check if the important parts of the application are responding with the correct SLA defined.
+* Basics Web Calls to check if all the components of the application are responding.
 
-Behind the scene, we used (TypeScript, Gulp, NPM...)
+Behind the scenes, we used (TypeScript, Gulp, NPM...)
 
 The fact that the load tests are directly integrated in their pipeline, helps Orckestra to have a stronger application at the end, and makes sure that the tests are ran every time and not manually triggered or forgotten to be ran.
 
