@@ -127,28 +127,27 @@ For now, this extension is really straightforward but it helps Orckestra to laun
 * Basics API Calls to check if the important parts of the application are responding with the correct SLA defined.
 * Basics Web Calls to check if all the components of the application are responding.
 
-Behind the scenes, we used (TypeScript, Gulp, NPM...)
+Behind the scenes, we used (TypeScript, Gulp, NPM...).
 
-The fact that the load tests are directly integrated in their pipeline, helps Orckestra to have a stronger application at the end, and makes sure that the tests are ran every time and not manually triggered or forgotten to be ran.
+The fact that the load tests are directly integrated in their pipeline helps Orckestra to have a stronger application at the end, and makes sure the tests are run every time and not manually triggered or forgotten.
 
 ![Load Impact VSTS Extension](../images/OrckestraRelease.png)
 
-Here is an example about the test called "GetGuessCart" launched from VSTS :
+Here is an example of the test "GetGuessCart" launched from VSTS:
 
 ![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
 
-When the test is done on Load Impact, Orckestra have a slack notification :
+When the test is done on Load Impact, Orckestra receives a slack notification:
 
 ![Load Impact VSTS Extension](../images/OrckestraSlack.png)
 
-We also started to implement the Application Insights feature inside Orckestra Commerce to track the users interactions (see next chapters). In the future, Orckestra will correlate the Load tests data with the User Telemetry one to have deeper results and adapt their load scenarios to anticipate the scale for example.
+We also started to implement the Application Insights feature inside OCC to track user interactions (see the next sections). In the future, Orckestra will correlate the load test data with the user telemetry one to obtain deeper results and adapt their load scenarios to anticipate the scale.
 
-### Functional UI Testing
+### Functional UI testing
 
-The QA team does a lot of test manually, which of course take some time and is prone to mistakes. Because on one of Orckestra's front end application some functional tests were already in place, we decided to use the same approach, and to make those tests part of the continuous integration pipeline. Faster feedback is always better.
+The QA team does a lot of testing manually, which takes time and is prone to mistakes. Because some functional tests were already in place on one of Orckestra's front-end applications, we decided to use the same approach and make those tests part of the Continuous Integration pipeline. Faster feedback is always better.
 
-These tests are written in Node.js and use [Nigthwatch.js](http://nightwatchjs.org/) to interact with the UI. Behind the scene, Nightwatch.js uses [Selenium](http://www.seleniumhq.org/)).
-Nightwatch is very easy to use, here is what a simple test looks like:
+These tests are written in Node.js and use [Nightwatch.js](http://nightwatchjs.org/) to interact with the UI. Behind the scenes, Nightwatch.js uses [Selenium](http://www.seleniumhq.org/)). Here is what a simple test with Nightwatch looks like:
 
 {% highlight javascript %}
 describe('Demo test for Mocha', function() {
@@ -175,16 +174,16 @@ Nightwatch will then output a JUnit test report that can be imported by VSTS.
 
 For now, we decided to use a custom build agent with Chrome installed on it. But [PhantomJS](http://phantomjs.org/) or similar libraries could be used instead of a real browser, making these tests runnable on a hosted agent.
 
-### User Telemetry
+### User telemetry
 
-When dealing with a big lead time, wastes or mistakes that happens at the beginning of the pipeline are very costly since they potentially impact weeks of work.
-We decided to implement some user telemetry to know which features where used and which were not. 
-The product management's team will then have concrete data to help them make sure the team is working on something that delivers tangible value to the end customer.
+When dealing with a long lead time, wastes or mistakes that happen at the beginning of the pipeline are very costly since they potentially impact weeks of work.
+We decided to implement some user telemetry to determine which features were used and which were not. 
+The product management team will then have concrete data to help them make sure the team is working on something that delivers tangible value to the end customer.
 
-Our goal was to be able to monitor the usage of the different features of one of the front-end application built in JavaScript (Angular.js) as a start.
-This application also use [Redux](https://github.com/reactjs/redux), a library that serves as an alternative to the MVC pattern and helps writing applications with a consistent behavior.
-In Redux every event (a user clicking a button, a response from the server, etc.) is known as an [action](http://redux.js.org/docs/basics/Actions.html) and is described via a plain JavaScript object.
-Each action as a `type`, and may have additional properties describing the event. For example, an action describing a user adding a comment might look like that:
+Our goal was to be able to monitor the use of the different features of one front-end application built in JavaScript (Angular.js) as a start.
+This application also used [Redux](https://github.com/reactjs/redux), a library that serves as an alternative to the MVC pattern and helps write applications with a consistent behavior.
+In Redux every event (a user clicking a button, a response from the server, for example) is known as an [action](http://redux.js.org/docs/basics/Actions.html) and is described via a plain JavaScript object.
+Each action has a `type`, and may have additional properties describing the event. For example, an action describing a user adding a comment might look like this:
 
 {% highlight text %}
 {
@@ -194,17 +193,17 @@ Each action as a `type`, and may have additional properties describing the event
 {% endhighlight %} 
 
 This action is then dispatched to allow the system to react accordingly (for example, updating a counter of the number of comments).
-One interesting property of Redux, is that every action will always go through a component known as the `dispatcher` first. 
-This means that we can add a custom hook to the `dispatcher` to monitor all the `actions` going through the system. This kind of hooks are known as a [middleware](http://redux.js.org/docs/advanced/Middleware.html).
+One interesting property of Redux is that every action will always go through a component known as the `dispatcher` first. 
+This means we can add a custom hook to the `dispatcher` to monitor all the `actions` going through the system. These kind of hooks are known as [middleware](http://redux.js.org/docs/advanced/Middleware.html).
 
 We decided to build a custom `middleware` that will send the `actions` to Application Insights on Azure. This would allow for precise usage monitoring of the features.
 You can find the finished and reusable middleware [on GitHub](https://github.com/wbuchwalter/redux-appinsights).
 
-First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal and add it to our application.  
-Then we plug our custom `middleware` into the application, the only thing left to do is define which `actions` we want to track. 
+First we need to create an Application Insights instance on Azure, grab the JavaScript snippet from the portal, and add it to our application.  
+Then we plug our custom `middleware` into the application. After that, the only thing left to do is define which `actions` we want to track. 
 We could log every action that occurs, but too much logging is like no logging at all because it becomes harder to find meaningful information (See [Jeff Atwood's post on the subject](https://blog.codinghorror.com/the-problem-with-logging/)).
 
-To mark an `action` as of interest we simply have to append the object:
+To mark an `action` as of interest, we simply have to append the object:
 
 {% highlight text %}
 {
@@ -220,11 +219,11 @@ We can see that our `actions` are correctly received by Application Insights.
 
 ![Application Insight Image](/images/orckestra1.png)
  
-A good practice could be to define our expectation before rolling out a new feature, for example: "We expect 10% of our user to post a comment (our new feature) once a day".
-With Application Insights Analytics we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
+A good practice could be to define our expectation before rolling out a new feature. For example: "We expect 10% of our users to post a comment (our new feature) once a day."
+With Application Insights Analytics, we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
-## Looking Ahead: MicroServices & Containers
+## Looking ahead: Microservices and containers
 
 Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
 This project will run for an extended period of time and we only touched the surface during this Hackfest.
