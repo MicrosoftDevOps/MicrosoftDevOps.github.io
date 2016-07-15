@@ -8,24 +8,24 @@ date:   2016-06-30
 categories: DevOps
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
-excerpt:  This article is aimed a sharing the learnings from the DevOps Hackfest with Orckestra.
+excerpt:  This article is aimed at sharing the learnings from the DevOps Hackfest with Orckestra.
 ---
 
-## Learning from Hackfest with Orckestra ##
+# Learnings from a DevOps Hackfest with Orckestra #
 
-Orckestra teamed up with Microsoft for a week during a hackfest. 
-During this event we discussed different DevOps practices that could positively impact their software delivery process, among which:
+Orckestra teamed up with Microsoft for a week-long Hackfest. 
+During this event we discussed different DevOps practices that could improve their software delivery processes, such as:
   
 * Automated load testing
-* Automated functional tests as part of the Continuous Integration
+* Automated functional tests as part of Continuous Integration
 * User telemetry
 * Microservices and containerization
 
-Many people from Orckestra were involved during the value stream mapping, but here is the core hack team:
+The core hack team from Orckestra included the following:
 
 * Maxime Beaudry - Senior Developer
-* Nicolas Rose - Director of Software Engeneering
-* Stephane Lapointe - Cloud Solution Architect, and Microsoft Azure Most Valuable Professional
+* Nicolas Rose - Director of Software Engineering
+* Stephane Lapointe - Cloud Solution Architect and Microsoft Azure Most Valuable Professional
 * Stephane Larocque - Senior Developer & Team Lead
 * Guillaume Salles - UI Architect
 * Simon Michaud - Automation Team Lead
@@ -36,23 +36,25 @@ Many people from Orckestra were involved during the value stream mapping, but he
 * Nicolas Gauthier -  Senior Developer & Team Lead
 * Christian Rousseau - Principal Infrastructure Architect
 * Mélanie Gillet - Senior Developer & Team Lead
-* Julie Gueho - Product Owner
-* William Buchwalter ([@wbuchw](http://twitter.com/wbuchw)) - Technical Evangelist at Microsoft
-* Julien Stroheker ([@Ju_Stroh](http://twitter.com/ju_stroh)) - Technical Evangelist at Microsoft
+* Julie Gueho - Product Owner 
+
+They were joined by these technical evangelists from Microsoft:
+* William Buchwalter ([@wbuchw](http://twitter.com/wbuchw)) 
+* Julien Stroheker ([@Ju_Stroh](http://twitter.com/ju_stroh)) 
 
  
-## Customer Profile ##
+## Customer profile ##
 
-Founded in 2006, Orckestra is the leading provider of .NET e-commerce solutions and services.
-It is based in Montréal, Canada and has offices in Europe and USA.
+Founded in 2006, [Orckestra](http://www.orckestra.com/) is the leading provider of .NET e-commerce solutions and services.
+It is based in Montréal, Canada, and has offices in Europe and the United States.
 
-During this hackfest we focused on their main product, called "Orckestra Commerce Cloud" (OCC) which is a unified commerce platform enabling retailers to create 
-seamless shopping experiences for their customers online, on mobile and in store.
+During this Hackfest, we focused on their main product, Orckestra Commerce Cloud (OCC), a unified commerce platform enabling retailers to create 
+seamless shopping experiences for their customers online, on mobile, and in stores.
 
-### Architecture Overview
+### Architecture overview
 
-Currently, OCC is a monolithic system that run on multiple virtual machines on Azure (IaaS). 
-Each customer has its dedicated OCC infrastructure, and the number of VMs can vary based on the size of the customer.
+Currently, OCC is a monolithic system that runs on multiple virtual machines on Azure (Infrastructure as a Service). 
+Each customer has its dedicated OCC infrastructure, and the number of virtual machines can vary based on the size of the customer.
 
 ## Problem Statement ##
 
