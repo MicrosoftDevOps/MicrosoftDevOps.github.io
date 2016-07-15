@@ -56,56 +56,56 @@ seamless shopping experiences for their customers online, on mobile, and in stor
 Currently, OCC is a monolithic system that runs on multiple virtual machines on Azure (Infrastructure as a Service). 
 Each customer has its dedicated OCC infrastructure, and the number of virtual machines can vary based on the size of the customer.
 
-## Problem Statement ##
+## Problem statement ##
 
-The first day and a half was about establishing a Value Stream Map of the current delivery process, from conception to production.
-This activity generated great discussions among the team and allowed everyone to see the big picture and not only their part of the process.
+We spent the first day and a half establishing a Value Stream Map (VSM) of the current delivery process, from conception to production.
+This activity generated great discussions among the team and allowed everyone to see the big picture—not just their part of the process.
 
 <img src="/images/orckestra2.jpg" alt="Value Stream Mapping" style="width: 90%;"/>
 
-This map is quite imposing, indeed there are actually two teams working sequentially to deliver the final product.  
-The first team (Product Core Team) is working on the core platform (OCC), features that are common to every customers. Its processes are described by the top row in the above picture.   
-Once done, another team (Product Implementation Team) grab the OCC's package and add features specific to a given customer. A package containing both team's work is then released to the end customer. These processes are described by the bottom row in the picture.  
+As the Value Stream Map shows, there are actually two teams working sequentially to deliver the final product.  
+The first team (Product Core Team) is working on the core platform (OCC), features that are common to every customer. Its processes are described by the top row in the image above.   
+Once done, another team (Product Implementation Team) takes the OCC package and adds features specific to a given customer. A package containing both teams' work is then released to the end customer. These processes are described in the bottom row of the VSM image.  
 These two groups of processes form a single value stream, not two, since no value is delivered until all the above steps are taken one after the other:  
 
 > A value stream is the sequence of activities required to design, produce, and deliver a good or service to a customer. [...]  
 > Value Stream Mapping - Karen Martin & Mike Osterling
 
 While necessary today, this approach means there is no easy way for the platform team to ship an update directly in production, even if no new features or breaking changes were made.
-Consequently, delivering a new feature in production takes approximately **28 weeks**, which is much longer that Orckestra's goal.
+Consequently, delivering a new feature in production takes approximately **28 weeks**, which is much longer than Orckestra's goal.
 
-Orckestra has already implemented a lot of DevOps practices, among which:  
+Orckestra has already implemented a lot of DevOps practices; among them:  
   
-* **Continuous Integration**: A commit on any branch will trigger a new build on **Visual Studio Team Services**, and run the **unit tests**. 
+* **Continuous Integration (CI)**: A commit on any branch will trigger a new build on **Visual Studio Team Services (VSTS)**, and run the **unit tests**. 
 * **Integration Tests**: Once the CI passes, a new release is triggered. This release will run integration tests on the solution. Since this is a long process (about one hour), multiple commits are grouped together in a single release.
 * **Code Reviews**: Features are developed on a separate feature branch. To merge back into the `dev` branch, a **pull request** has to be opened in VSTS and approved by at least two other people (technical and business). 
-* **Automated Deployments**: Every night (or on demand) [**Jenkins**](http://www.jenkins.io) will deploy the integration and QA environment with the latest available version.
+* **Automated Deployments**: Every night (or on demand), [**Jenkins**](http://www.jenkins.io) will deploy the integration and QA environment with the latest available version.
 
-### Hackfest's Objectives ###
+### Hackfest objectives ###
 
 We agreed on two objectives for the four days of the Hackfest:  
 
-**1.** Improving the lead time of the current process as a short to medium term objective. While not ideal, the current process cannot be changed in a matter of days, so improvements needed to be found. 
+1. Improving the lead time of the current process as a short- to medium-term objective. While not ideal, the current process cannot be changed in a matter of days, so improvements needed to be found. 
 Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following topics:  
 
-* Load tests: Currently load testing takes around 2-3 days, is done manually and has a scrap rate of 95%, this is a huge time investment. We worked on automating and simplifying it.  
-* Functional tests: While some parts of the front-end already have functional tests, automation was missing. We wanted to change that so that it becomes part of the continuous integration.  
-* User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it allows to prioritize work more efficiently. 
+  * Load tests: Currently load testing takes around 2-3 days, is done manually, and has a scrap rate of 95%, a huge time investment. We worked on automating and simplifying it.  
+  * Functional tests: While some parts of the front-end already have functional tests, automation was missing. We wanted to change that so it becomes part of the continuous integration.  
+  * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it helps to prioritize work more efficiently. 
 
-**2.** Exploring a new process: Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs.  
+2. Exploring a new process. Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs. Options include:  
 
-* Microservices architecture: How could the OCC be split into smaller independent parts?  
-* Containers: Among other things, containers would allow easier deployments, and a consistent environment from development to production.  
+  * Microservices architecture: How could the OCC be split into smaller, independent parts?  
+  * Containers: Among other things, containers would allow easier deployments and a consistent environment from development to production.  
 
-Once the mapping complete, the map was moved in a place where everyone could see and discuss it.
+Once the mapping was complete, we moved it to a place where everyone could see and discuss it.
 
 ![Value Stream Mapping](/images/orckestra3.jpg)
 
 *Check the resources section if you want to see the VSM in HD.*
 
-## Solutions, Steps, and Delivery ##
+## Solutions, steps, and delivery ##
 
-### Load Tests
+### Load tests
 
 Orckestra has implemented some load tests in the past, using the Test Controllers and Test Agents from Visual Studio running on multiple virtual machines deployed on Azure.
 
