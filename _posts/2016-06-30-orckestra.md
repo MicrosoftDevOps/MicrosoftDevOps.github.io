@@ -16,7 +16,7 @@ excerpt:  This article is aimed at sharing the learnings from the DevOps Hackfes
 Orckestra teamed up with Microsoft for a week-long Hackfest. 
 During this event we discussed different DevOps practices that could improve their software delivery processes, such as:
   
-* Automated load testing
+* Automated load tests
 * Automated functional tests as part of Continuous Integration
 * User telemetry
 * Microservices and containerization
@@ -49,7 +49,7 @@ Founded in 2006, [Orckestra](http://www.orckestra.com/) is the leading provider 
 It is based in Montréal, Canada, and has offices in Europe and the United States.
 
 During this Hackfest, we focused on their main product, Orckestra Commerce Cloud (OCC), a unified commerce platform enabling retailers to create 
-seamless shopping experiences for their customers online, on mobile, and in stores.
+seamless shopping experiences for their customers online, on mobile, and in store.
 
 ### Architecture overview
 
@@ -133,7 +133,7 @@ The fact that the load tests are directly integrated in their pipeline helps Orc
 
 ![Load Impact VSTS Extension](../images/OrckestraRelease.png)
 
-Here is an example of the test "GetGuessCart" launched from VSTS:
+Here is an example of the test "GetGuestCart" launched from VSTS:
 
 ![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
 
@@ -223,7 +223,7 @@ A good practice could be to define our expectation before rolling out a new feat
 With Application Insights Analytics, we can then create custom queries such as the percentage of sessions where the event `'ADD_COMMENT'` occurred.
 Comparing our expectations with the reality, we could then decide which direction to take next.
 
-## Looking ahead: Microservices and containers
+## Looking ahead: microservices and containers
 
 Part of the hacking team spent some time looking at how to improve the value stream more dramatically by rethinking the whole release process.
 This project will run for an extended period of time and we only touched the surface during this Hackfest.
@@ -254,13 +254,15 @@ Docker Swarm could then be used to orchestrate the different containers. DC/OS s
  
 ## Conclusion ##
 
-The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it really helped the team see the big picture and understand what really happens outside of their own day-to-day roles.
+The Value Stream Mapping was a challenging activity considering the complexity of the process and the number of people it involved, but it helped the team see the big picture and understand what really happens outside of their own day-to-day roles.
 
 A lot of very interesting ideas on how to improve the process were discussed during this Hackfest, some more doable than others. Most importantly, though, the whole team realized the value of continuously improving and they are committed and willing to put a lot of effort into this.
 
 
 ## General lessons ##  
-  
+
+Some key points to consider:  
+
 * Automated testing needs to always be a top priority, from unit tests to integration and load tests. Being confident in the quality of the code is a prerequisite in order to release it.
 * Monolithic applications work, and can be optimized to a certain extent, but continuous delivery and small batch size can be obtained only by having smaller components with well-defined boundaries.
 
@@ -271,7 +273,7 @@ While we discussed a specific implementation of microservices (containers), ther
 * [The Value Stream Mapping in HD](/images/orckestra_VSM_HD.jpg)
 * [Orchestrating containers with Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
 * [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/)
-* [Running Docker Swarm on Microsoft Azure (channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
+* [Running Docker Swarm on Microsoft Azure (Channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
 * [Mesosphere on Azure](https://mesosphere.com/azure/)
 * [.NET Core 1.0](https://www.microsoft.com/net/core)
 * [Load Impact](https://loadimpact.com/)
