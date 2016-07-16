@@ -259,8 +259,7 @@ The Value Stream Mapping was a challenging activity considering the complexity o
 A lot of very interesting ideas on how to improve the process were discussed during this Hackfest, some more doable than others. Most importantly, though, the whole team realized the value of continuously improving and they are committed and willing to put a lot of effort into this.
 
 
-## General lessons ##  
-
+## General lessons ##
 Some key points to consider:  
 
 * Automated testing needs to always be a top priority, from unit tests to integration and load tests. Being confident in the quality of the code is a prerequisite in order to release it.
