@@ -121,7 +121,7 @@ So we started [this project on GitHub called loadimpact-vsts-extension](https://
 
 The idea is simple: Reach the [LoadImpact.com API](http://developers.loadimpact.com/api/index.html) and start some scenarios already set up whenever they want thanks to a Build or Release step :
 
-![Load Impact VSTS Extension](../images/OrckestraLoadImpactExt.png)
+![Load Impact VSTS Extension](/images/OrckestraLoadImpactExt.png)
 
 For now, this extension is really straightforward but it helps Orckestra to launch some recursing tests such as:
 * Basics API Calls to check if the important parts of the application are responding with the correct SLA defined.
@@ -131,15 +131,15 @@ Behind the scenes, we used (TypeScript, Gulp, NPM...).
 
 The fact that the load tests are directly integrated in their pipeline helps Orckestra to have a stronger application at the end, and makes sure the tests are run every time and not manually triggered or forgotten.
 
-![Load Impact VSTS Extension](../images/OrckestraRelease.png)
+![Load Impact VSTS Extension](/images/OrckestraRelease.png)
 
 Here is an example of the test "GetGuestCart" launched from VSTS:
 
-![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
+![Load Impact VSTS Extension](/images/OrckestraLoadImpact.png)
 
 When the test is done on Load Impact, Orckestra receives a slack notification:
 
-![Load Impact VSTS Extension](../images/OrckestraSlack.png)
+![Load Impact VSTS Extension](/images/OrckestraSlack.png)
 
 We also started to implement the Application Insights feature inside OCC to track user interactions (see the next sections). In the future, Orckestra will correlate the load test data with the user telemetry one to obtain deeper results and adapt their load scenarios to anticipate the scale.
 
