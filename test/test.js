@@ -60,11 +60,11 @@ describe("Check Files modified", function(){
 
 					});
 
-						it("Verify resources", function () {
-						pattern = /\s*((## [Rr]esources ##)+)([\s\S]*?)\s*/
-						assert.ok (pattern.test(contents));
+					// 	it("Verify resources", function () {
+					// 	pattern = /\s*((## [Rr]esources ##)+)([\s\S]*?)\s*/
+					// 	assert.ok (pattern.test(contents));
 
-					});
+					// });
 				});
 			}
 		}
