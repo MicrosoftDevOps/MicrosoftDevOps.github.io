@@ -86,7 +86,7 @@ We agreed on two objectives for the four days of the Hackfest:
 **1.** Improving the lead time of the current process as a short to medium term objective. While not ideal, the current process cannot be changed in a matter of days, so improvements needed to be found. 
 Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following topics:  
 
-* Load tests: Currently load testing takes around 2 days, is done manually and has a scrap rate of 95%, this is a huge time investment. We worked on automating and simplifying it.  
+* Load tests: Currently load testing takes around 2-3 days, is done manually and has a scrap rate of 95%, this is a huge time investment. We worked on automating and simplifying it.  
 * Functional tests: While some parts of the front-end already have functional tests, automation was missing. We wanted to change that so that it becomes part of the continuous integration.  
 * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it allows to prioritize work more efficiently. 
 
@@ -99,7 +99,45 @@ Once the mapping complete, the map was moved in a place where everyone could see
 
 ![Value Stream Mapping](/images/orckestra3.jpg)
 
+*Check the resources section if you want to see the VSM in HD.*
+
 ## Solutions, Steps, and Delivery ##
+
+### Load Tests
+
+Orckestra has implemented some load tests in the past, using the Test Controllers and Test Agents from Visual Studio running on multiple virtual machines deployed on Azure.
+
+All the scenarios were setup by someone in the company, who left a few months ago, before our Hackfest. This person did not share any documentations about the complex configuration and architecture that he had setup. Last but not least, the results were too complicated to understand, manually trigerred and not very relevant in terms of performance, causing the problematic of the 95% Scrape Rate in the VSM !
+
+Aware about the previous statement, the QA team started to rethink the way to do this step a few weeks ago before our intervention, and decided to look at the cloud based solution from LoadImpact.com to generate their web tests on the front-end part and on the API part of the application first.
+
+During our hackfest, the QA team took the time to setup some scenarios in their LoadImpact.com subscription, and in the meantime we offered to develop an VSTS extension to automatically start some test scenarios from their VSTS tenant whenever they want in their Build or Release pipeline. With this approach, we proved at Orscketra that everything can be automatized in their stream thanks to some "Hack", for example an extension in this case.
+
+So we started [this project on GitHub called : loadimpact-vsts-extension](https://github.com/julienstroheker/loadimpact-vsts-extension)
+
+The idea is simple, reach the [LoadImpact.com API](http://developers.loadimpact.com/api/index.html) and start some scenarios already setup whenever they want thanks to a Build or Release step :
+
+![Load Impact VSTS Extension](../images/OrckestraLoadImpactExt.png)
+
+For now, this extension is really straighforward but helps Orckestra to launch some recursing tests like :
+* Basics API Calls to check if the important parts of the application are responding with the correct SLA defined ;
+* Basics Web Calls to check if all the componants of the application are responsding ;
+
+Behind the scene, we used (TypeScript, Gulp, NPM...)
+
+The fact that the load tests are directly integrated in their pipeline, helps Orckestra to have a stronger application at the end, and makes sure that the tests are ran every time and not manually triggered or forgotten to be ran.
+
+![Load Impact VSTS Extension](../images/OrckestraRelease.png)
+
+Here is an example about the test called "GetGuessCart" launched from VSTS :
+
+![Load Impact VSTS Extension](../images/OrckestraLoadImpact.png)
+
+When the test is done on Load Impact, Orckestra have a slack notification :
+
+![Load Impact VSTS Extension](../images/OrckestraSlack.png)
+
+We also started to implement the Application Insights feature inside Orckestra Commerce to track the users interactions (see next chapters). In the future, Orckestra will correlate the Load tests data with the User Telemetry one to have deeper results and adapt their load scenarios to anticipate the scale for example.
 
 ### Functional UI Testing
 
@@ -227,9 +265,11 @@ While we discussed a specific implementation of microservices (containers) there
 
 
 ## Resources ##
+* [The Value Stream Mapping in HD](/images/orckestra_VSM_HD.jpg)
 * [Orchestrating containers with service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/04/25/orchestrating-containers-with-service-fabric/)
 * [Azure container Services](https://azure.microsoft.com/en-us/services/container-service/)
 * [Running Docker Swarm on Microsoft Azure (channel 9)](https://channel9.msdn.com/Blogs/containers/Docker-Swarm-Part-1)
 * [Mesosphere on Azure](https://mesosphere.com/azure/)
 * [.NET Core 1.0](https://www.microsoft.com/net/core)
+* [Load Impact](https://loadimpact.com/)
 
