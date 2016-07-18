@@ -39,17 +39,18 @@ The core hack team from Orckestra included the following:
 * Julie Gueho - Product Owner 
 
 They were joined by these technical evangelists from Microsoft:
+
 * William Buchwalter ([@wbuchw](http://twitter.com/wbuchw)) 
 * Julien Stroheker ([@Ju_Stroh](http://twitter.com/ju_stroh)) 
 
  
 ## Customer profile ##
 
-Founded in 2006, [Orckestra](http://www.orckestra.com/) is the leading provider of .NET e-commerce solutions and services.
+Founded in 2006, [Orckestra](http://www.orckestra.com/) is a leading provider of .NET e-commerce solutions and services.
 It is based in Montréal, Canada, and has offices in Europe and the United States.
 
 During this Hackfest, we focused on their main product, Orckestra Commerce Cloud (OCC), a unified commerce platform enabling retailers to create 
-seamless shopping experiences for their customers online, on mobile, and in store.
+seamless shopping experiences for their customers online, on mobile, and in-store.
 
 ### Architecture overview
 
@@ -92,7 +93,7 @@ Many suggestions were made on how to optimize it during the Value Stream Mapping
 
   * Load tests: Currently load testing takes around 2-3 days, is done manually, and has a scrap rate of 95%, a huge time investment. We worked on automating and simplifying it.  
   * Functional tests: While some parts of the front-end already have functional tests, automation was missing. We wanted to change that so it becomes part of the continuous integration.  
-  * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it helps to prioritize work more efficiently. 
+  * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows a team to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it helps to prioritize work more efficiently. 
 
 2. Exploring a new process. Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs. Options include:  
 
@@ -111,7 +112,7 @@ Once the mapping was complete, we moved it to a place where everyone could see a
 
 Orckestra has implemented some load tests in the past, using the Test Controllers and Test Agents from Visual Studio running on multiple virtual machines deployed on Azure.
 
-All the scenarios were set up by an Orckestra employee who had left the company prior to our Hackfest, and no documentation about the complex configuration and architecture was available. The results were too complicated to understand, manually triggered, and not very relevant in terms of performance, causing the problematic 95% scrape rate in the VSM.
+All the scenarios were set up by an Orckestra employee who had left the company prior to our Hackfest, and no documentation about the complex configuration and architecture was available. The results were too complicated to understand, manually triggered, and not very relevant in terms of performance, causing the problematic 95% scrap rate in the VSM.
 
 Aware of this, the QA team started to rethink this step a few weeks before the Hackfest. They decided to look at the cloud-based solution from [LoadImpact.com](http://www.loadimpact.com) to generate their web tests on the front-end part and on the API part of the application first.
 
@@ -123,9 +124,9 @@ The idea is simple: Reach the [LoadImpact.com API](http://developers.loadimpact.
 
 ![Load Impact VSTS Extension](../images/OrckestraLoadImpactExt.png)
 
-For now, this extension is really straightforward but it helps Orckestra to launch some recursing tests such as:
-* Basics API Calls to check if the important parts of the application are responding with the correct SLA defined.
-* Basics Web Calls to check if all the components of the application are responding.
+For now, this extension is really straightforward but it helps Orckestra to launch some recursive tests such as:
+* Basic API Calls to check if the important parts of the application are responding with the correct SLA defined.
+* Basic Web Calls to check if all the components of the application are responding.
 
 Behind the scenes, we used (TypeScript, Gulp, NPM...).
 
