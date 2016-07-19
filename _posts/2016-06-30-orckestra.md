@@ -88,14 +88,16 @@ Orckestra has already implemented a lot of DevOps practices; among them:
 
 We agreed on two objectives for the four days of the Hackfest:  
 
-1. Improving the lead time of the current process as a short- to medium-term objective. While not ideal, the current process cannot be changed in a matter of days, so improvements needed to be found. 
+**Improving the lead time of the current process as a short- to medium-term objective**  
+While not ideal, the current process cannot be changed in a matter of days, so improvements needed to be found. 
 Many suggestions were made on how to optimize it during the Value Stream Mapping, and we agreed to work on the following topics:  
 
   * Load tests: Currently load testing takes around 2-3 days, is done manually, and has a scrap rate of 95%, a huge time investment. We worked on automating and simplifying it.  
   * Functional tests: While some parts of the front-end already have functional tests, automation was missing. We wanted to change that so it becomes part of the continuous integration.  
-  * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows a team to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it helps to prioritize work more efficiently. 
+  * User telemetry: This is something Orckestra had already envisioned but never implemented. User telemetry allows a team to understand how a feature is used (or not) by users in production. This is very important, especially when dealing with a long lead time as it helps to prioritize work more efficiently.  
 
-2. Exploring a new process. Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs. Options include:  
+**Exploring a new process**  
+Looking ahead, Orckestra's team is aware they will need to change the way they work in a more radical manner. We decided to explore ways for the platform to deliver smaller updates that could be shipped directly into production without needing rework from the team in charge of the customer's specific needs. Options include:  
 
   * Microservices architecture: How could the OCC be split into smaller, independent parts?  
   * Containers: Among other things, containers would allow easier deployments and a consistent environment from development to production.  
