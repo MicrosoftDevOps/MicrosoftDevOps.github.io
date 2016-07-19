@@ -1,0 +1,25 @@
+{
+  "name": "microsoftdevops-test",
+  "version": "1.0.0",
+  "description": "Testing evidence content with Travis",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicrosoftDevOps/MicrosoftDevOps.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MicrosoftDevOps/MicrosoftDevOps.github.io/issues"
+  },
+  "homepage": "https://github.com/MicrosoftDevOps/MicrosoftDevOps.github.io#readme",
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
+}
