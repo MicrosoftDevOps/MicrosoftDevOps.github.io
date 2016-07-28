@@ -3,4 +3,6 @@ _site/
 .jekyll-metadata
 .vscode
 Gemfile.lock
-npm-debug.*
+*.swp
+node_modules
+npm-debug*

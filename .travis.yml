@@ -1,13 +1,13 @@
-language: ruby
-rvm:
- - 2.2
-# uncomment this line if your project needs to run something other than `rake`:
-script: bundle _1.11.2_  install
+language: node_js
+node_js:
+  - 5.1.0
+before_scripts:
+  - npm install -g mocha
+  - npm install git
 
-branches:
-  only:
-    - master
-    
-notifications:
+env:
+    - commit = $TRAVIS_COMMIT_RANGE
+
+notification:
   email:
-    - dcaro@microsoft.com 
+    - dcaro@microsoft.com
