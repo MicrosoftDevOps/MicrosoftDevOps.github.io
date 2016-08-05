@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning from a DevOps Hackfest with a Leading Professoinal Services Provider"
+title: "Learnings from a DevOps Hackfest with a Leading Professional Services Provider"
 author: "Rasmus Hald"
 author-link: "#"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
@@ -8,19 +8,22 @@ date: 2016-07-01
 categories: DevOps
 color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
-excerpt: In this DevOps Hackfest, Microsoft teamed up with a leading provider of professional services to improve their development processes with a focus on automated testing and release management. We describe the process and the result in this article.
+excerpt: In this DevOps Hackfest, Microsoft teamed up with a leading provider of professional services to improve their development processes with a focus on automated testing and release management. We describe the process and the results in this article.
 ---
 
-## Learnings from a DevOps Hackfest with a Leading Professional Services Provider ##
+# Learnings from a DevOps Hackfest with a Leading Professional Services Provider #
+
 When a leading multinational professional services provider was looking for ways to improve their development processes, they met with Microsoft to discuss how DevOps could help. Together, they staged a DevOps Hackfest to implement DevOps practices, with a focus on automated testing and release management. 
+
 This article describes the results and how a “DevOps Duo” is now the new normal for this professional services provider (PSP). The DevOps Duo concept brings together two engineers—one each from the development and the deployment teams—who are jointly responsible for the lifecycle of a given application.
 
 ## Customer profile ##
 
-This customer is a leading provider of professional services to clients in multiple industries worldwide.
-Their IT department manages a large codebase and many applications, both big and small. A large part of this codebase was written prior to current practices and by people who may no longer be with the company. This is known as “legacy code” because it is not up to the standards of current development practices.
+This customer is a leading provider of professional services to clients in multiple industries worldwide. Their IT department manages a large codebase and many applications, both big and small. A large part of this codebase was written prior to current practices and by people who may no longer be with the company. This is known as “legacy code” because it is not up to the standards of current development practices.
+
 We (Microsoft) met with this PSP to discuss how DevOps can help them accelerate their development of software and push more ideas through to users. At the time, they had already started to change how they work and were implementing some good DevOps practices.
 Based on these talks, we decided to team up with them to hack these challenges. The joint hack team spent three days in April 2016 working on solutions.
+
 The joint team consisted of five contributors from the PSP along with the following technical evangelists from Microsoft:  
   
 - Aleksandar Djordjevic  
