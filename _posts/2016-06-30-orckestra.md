@@ -52,7 +52,11 @@ It is based in Montréal, Canada, and has offices in Europe and the United State
 During this Hackfest, we focused on their main product, Orckestra Commerce Cloud (OCC), a unified commerce platform enabling retailers to create 
 seamless shopping experiences for their customers online, on mobile, and in-store.
 
-### Architecture overview
+### Customer testimony ###
+
+<iframe src="https://channel9.msdn.com/Blogs/TalkDevOps/Hackfest-DevOps-with-Orckestra/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+### Architecture overview ###
 
 Currently, OCC is a monolithic system that runs on multiple virtual machines on Azure (Infrastructure as a Service). 
 Each customer has its dedicated OCC infrastructure, and the number of virtual machines can vary based on the size of the customer.
