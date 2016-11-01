@@ -1,5 +1,6 @@
 ---
 layout: post
+redirect_to: "https://microsoft.github.io/techcasestudies/devops/2016/07/01/LeadingPSP.html"
 title: "Learnings from a DevOps Hackfest with a Leading Professional Services Provider"
 author: "Rasmus Hald"
 author-link: "#"

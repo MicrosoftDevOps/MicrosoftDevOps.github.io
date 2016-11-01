@@ -1,5 +1,6 @@
 ---
 layout: post
+redirect_to: "https://microsoft.github.io/techcasestudies/devops/2016/06/30/orckestra.html"
 title:  "Learnings from a DevOps Hackfest with Orckestra"
 author: "William Buchwalter & Julien Stroheker"
 author-link: "#"

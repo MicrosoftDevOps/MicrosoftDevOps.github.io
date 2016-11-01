@@ -1,5 +1,6 @@
 ---
 layout: post
+redirect to: "https://microsoft.github.io/techcasestudies/devops/2016/05/24/karadamedica.html"
 title:  "Learnings from a DevOps Hackfest with Karadamedica"
 author: "Tsuyoshi Ushio"
 author-link: "#"
